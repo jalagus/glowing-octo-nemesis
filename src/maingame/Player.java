@@ -18,7 +18,7 @@ public class Player {
     public float y = 0;
     final float scale = 0.3f;
     
-    private int animSpeed = 250;
+    private int animSpeed = 150;
 
     public Player() {
 
