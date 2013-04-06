@@ -33,8 +33,8 @@ public class HighScoreState extends BasicGameState {
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
         background = new Image("assets/graphics/taustakuva_mustaharmaa.png");
         
-        hsFont = new UnicodeFont("data/menu.ttf", 80, false, false);  
-        scoreFont = new UnicodeFont("data/menu.ttf", 40, false, false);  
+        hsFont = new UnicodeFont("assets/menu.ttf", 80, false, false);  
+        scoreFont = new UnicodeFont("assets/menu.ttf", 40, false, false);  
         
         hsFont.getEffects().add(new ColorEffect(java.awt.Color.white));         
         scoreFont.getEffects().add(new ColorEffect(java.awt.Color.white));        
