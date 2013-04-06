@@ -10,8 +10,9 @@ import org.newdawn.slick.Sound;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.tiled.TiledMap;
-import zyklon.Enemy;
+import zyklon.PaussiEnemy;
 import zyklon.Inventory;
+import zyklon.SharkEnemy;
 
 public class GameBaseState extends BasicGameState {
 
@@ -19,7 +20,8 @@ public class GameBaseState extends BasicGameState {
     
     public static TiledMap map;
     public static Player player = new Player();
-    Enemy enemy = new Enemy(1, 1000, 1000);
+    PaussiEnemy paussiEnemy = new PaussiEnemy(1000, 1000);
+    SharkEnemy sharkEnemy = new SharkEnemy(0, 0);
     public static int mapWidth;
     public static int mapHeight;
     public static int mapXPosition = 0;
@@ -48,7 +50,8 @@ public class GameBaseState extends BasicGameState {
         gameMusic = new Sound("assets/audio/gameMusic.ogg");
         mapHeight = map.getHeight() * 64;
         mapWidth = map.getWidth() * 64;
-        enemy.init();
+        paussiEnemy.init();
+        sharkEnemy.init();
         
         lightMask = new Animation(new Image[] {
             new Image("assets/graphics/lightMask1.png"),
@@ -66,9 +69,10 @@ public class GameBaseState extends BasicGameState {
     public void render(GameContainer gc, StateBasedGame sbg, Graphics grphcs) throws SlickException {
         map.render(-mapXPosition, -mapYPosition);
         player.render();
-        enemy.render();
+        paussiEnemy.render();
+        sharkEnemy.render();
         
-        lightMask.getCurrentFrame().draw(0,0);
+        lightMask.getCurrentFrame().draw(0, 0);
         inventory.render();
     }
 
@@ -82,7 +86,8 @@ public class GameBaseState extends BasicGameState {
         
         Input input = gc.getInput();
         player.update(input, delta);
-        enemy.update(delta);
+        paussiEnemy.update(delta);
+        sharkEnemy.update(delta);
         mapXPosition = (int) player.x - 542;
         mapYPosition = (int) player.y - 426;
         if (input.isKeyPressed(Input.KEY_ESCAPE)) {
