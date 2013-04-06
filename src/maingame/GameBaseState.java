@@ -9,13 +9,15 @@ import org.newdawn.slick.Sound;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.tiled.TiledMap;
+import zyklon.Enemy;
 
 public class GameBaseState extends BasicGameState {
 
     Sound gameMusic;
     
     public static TiledMap map;
-    Player player = new Player();
+    public static Player player = new Player();
+    Enemy enemy = new Enemy(1, 1000, 1000);
 
     int stateId = -1;
     
@@ -32,6 +34,7 @@ public class GameBaseState extends BasicGameState {
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
         player = new Player();
         player.init();
+        enemy.init();
         map = new TiledMap("assets/tilemap.tmx");
         
         gameMusic = new Sound("assets/audio/gameMusic.ogg");
@@ -39,8 +42,9 @@ public class GameBaseState extends BasicGameState {
 
     @Override
     public void render(GameContainer gc, StateBasedGame sbg, Graphics grphcs) throws SlickException {
-        map.render((int) -player.x, (int) -player.y);
+        map.render((int) -(player.x - 542), (int) -(player.y - 426));
         player.render();
+        enemy.render();
     }
 
     @Override
@@ -51,7 +55,7 @@ public class GameBaseState extends BasicGameState {
         
         Input input = gc.getInput();
         player.update(input, delta);
-        
+        enemy.update(delta);
         if (input.isKeyPressed(Input.KEY_ESCAPE)) {
             gc.exit();
         }
