@@ -39,7 +39,7 @@ public class Player {
             currentSprite = rightSprite;
         }
 
-        int tileID = GameBaseState.map.getTileId((int) (512 + xMovement + 20) / 64, (384 + 20) / 64, 1);
+        int tileID = GameBaseState.map.getTileId((int) (x + xMovement + 20 + 512) / 64, (int) (y + 20 + 384) / 64, 1);
         if (!TileInfo.tilePropertyExists(tileID, "blocked")){
             x += xMovement;
         }
@@ -52,7 +52,7 @@ public class Player {
             currentSprite = downSprite;
         }
 
-        tileID = GameBaseState.map.getTileId((512 + 20) / 64, (int) (384 + yMovement + 20) / 64, 1);
+        tileID = GameBaseState.map.getTileId((int) (x + 20 + 512) / 64, (int) (y + yMovement + 20 + 384) / 64, 1);
         if (!TileInfo.tilePropertyExists(tileID, "blocked")){
             y += yMovement;
         }
