@@ -11,7 +11,7 @@ import org.newdawn.slick.tiled.TiledMap;
 
 public class GameBaseState extends BasicGameState {
 
-    TiledMap map;
+    public static TiledMap map;
     Player player = new Player();
 
     int stateId = -1;
@@ -34,7 +34,7 @@ public class GameBaseState extends BasicGameState {
 
     @Override
     public void render(GameContainer gc, StateBasedGame sbg, Graphics grphcs) throws SlickException {
-        map.render(0, 0);
+        map.render((int) -player.x, (int) -player.y);
         player.render();
     }
 

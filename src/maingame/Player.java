@@ -3,6 +3,7 @@ package maingame;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
+import zyklon.TileInfo;
 
 public class Player {
     Image leftSprite;
@@ -10,8 +11,8 @@ public class Player {
     Image upSprite;
     Image downSprite;
     Image currentSprite;
-    float x = 0;
-    float y = 0;
+    public float x = 0;
+    public float y = 0;
     final float scale = 0.3f;
 
     public Player() {
@@ -27,25 +28,42 @@ public class Player {
     }
 
     public void update(Input input, int delta) {
+        float xMovement = 0;
+        float yMovement = 0;
+
         if (input.isKeyDown(Input.KEY_A)) {
-            x += -scale * delta;
+            xMovement = -scale * delta;
             currentSprite = leftSprite;
-        }
-        if (input.isKeyDown(Input.KEY_D)) {
-            x += scale * delta;
+        } else if (input.isKeyDown(Input.KEY_D)) {
+            xMovement = scale * delta;
             currentSprite = rightSprite;
         }
-        if (input.isKeyDown(Input.KEY_W)) {
-            y += -scale * delta;
-            currentSprite = upSprite;
+
+        int tileID = GameBaseState.map.getTileId((int) (512 + xMovement + 20) / 64, (384 + 20) / 64, 1);
+        if (!TileInfo.tilePropertyExists(tileID, "blocked")){
+            x += xMovement;
         }
-        if (input.isKeyDown(Input.KEY_S)) {
-            y += scale * delta;
+
+        if (input.isKeyDown(Input.KEY_W)) {
+            yMovement = -scale * delta;
+            currentSprite = upSprite;
+        } else if (input.isKeyDown(Input.KEY_S)) {
+            yMovement = scale * delta;
             currentSprite = downSprite;
+        }
+
+        tileID = GameBaseState.map.getTileId((512 + 20) / 64, (int) (384 + yMovement + 20) / 64, 1);
+        if (!TileInfo.tilePropertyExists(tileID, "blocked")){
+            y += yMovement;
         }
     }
 
     public void render() {
-        currentSprite.draw(x, y);
+        currentSprite.draw(512, 384);
+    }
+
+    @Override
+    public String toString() {
+        return x + " " + y;
     }
 }

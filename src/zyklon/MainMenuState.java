@@ -21,7 +21,7 @@ public class MainMenuState extends BasicGameState {
     UnicodeFont menuFont;
     UnicodeFont headerFont;
     UnicodeFont creditFont;
-    
+        
     int activeOption = 0;
     
     int stateID = -1;
