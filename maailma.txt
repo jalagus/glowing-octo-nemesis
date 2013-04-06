@@ -13,8 +13,20 @@ K = Synkempää metsää tai raunioita tjsp...
 
 ALUEET:
 
-Keskikohta: Talo ja piha-alue
-Vasen alakulma: Maze, synkempi metsä tai joku talo.
+Ylä ->
+vasen:
+keski:
+oikea:
+
+Keski ->
+vasen:
+keski: Talo ja piha-alue
+oikea:
+
+Ala ->
+vasen: Maze, synkempi metsä tai joku talo.
+keski:
+oikea:
 
 
 
