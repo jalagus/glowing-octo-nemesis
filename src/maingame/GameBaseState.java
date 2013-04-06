@@ -5,12 +5,15 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.Sound;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.tiled.TiledMap;
 
 public class GameBaseState extends BasicGameState {
 
+    Sound gameMusic;
+    
     public static TiledMap map;
     Player player = new Player();
 
@@ -30,6 +33,8 @@ public class GameBaseState extends BasicGameState {
         player = new Player();
         player.init();
         map = new TiledMap("assets/tilemap.tmx");
+        
+        gameMusic = new Sound("assets/audio/gameMusic.ogg");
     }
 
     @Override
@@ -40,6 +45,10 @@ public class GameBaseState extends BasicGameState {
 
     @Override
     public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
+        if (!gameMusic.playing()) {
+            gameMusic.loop(1.0f, 0.2f);
+        }
+        
         Input input = gc.getInput();
         player.update(input, delta);
         

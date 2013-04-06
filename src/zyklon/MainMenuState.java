@@ -57,8 +57,7 @@ public class MainMenuState extends BasicGameState {
         creditFont.getEffects().add(new ColorEffect(java.awt.Color.white));
         
         menuChangeSound = new Sound("assets/audio/menuBlop.ogg");
-        menuMusic = new Sound("assets/audio/menuMusic.ogg");
-        
+        menuMusic = new Sound("assets/audio/menuMusic.ogg");        
     }
   
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
@@ -102,7 +101,7 @@ public class MainMenuState extends BasicGameState {
   
     public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
         if (!menuMusic.playing()) {
-            //menuMusic.loop();
+            menuMusic.loop(1.5f, 0.2f);
         }
         
         menuFont.loadGlyphs();
