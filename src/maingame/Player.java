@@ -8,6 +8,7 @@ import org.newdawn.slick.Sound;
 import zyklon.TileInfo;
 
 import java.util.HashMap;
+import static maingame.MoveTile.map;
 
 public class Player {
     Image currentSprite;
@@ -103,6 +104,11 @@ public class Player {
         if (TileInfo.tilePropertyExists(tileID, "event")) {
             int eventID = (Integer) TileInfo.getTileProperty(tileID, "event");
             if (!fuck.playing()) fuck.play();
+        }
+        if (TileInfo.tilePropertyExists(tileID, "pickup")) {
+            int eventID = (Integer) TileInfo.getTileProperty(tileID, "pickup");
+            zyklon.Inventory.pickup(tileID);
+            map.setTileId((int) x / 64, (int) y / 64, 1, 0);
         }
     }
 
