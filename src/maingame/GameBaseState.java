@@ -20,14 +20,11 @@ public class GameBaseState extends BasicGameState {
     public static TiledMap map;
     public static Player player = new Player();
     Enemy enemy = new Enemy(1, 1000, 1000);
-<<<<<<< Updated upstream
     public static int mapWidth;
     public static int mapHeight;
     public static int mapXPosition = 0;
     public static int mapYPosition = 0;
-=======
     Inventory inventory = new Inventory();
->>>>>>> Stashed changes
 
     int stateId = -1;
 
@@ -46,11 +43,7 @@ public class GameBaseState extends BasicGameState {
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
         player = new Player();
         player.init();
-<<<<<<< Updated upstream
-=======
-        enemy.init();
         inventory.init();
->>>>>>> Stashed changes
         map = new TiledMap("assets/tilemap.tmx");
         gameMusic = new Sound("assets/audio/gameMusic.ogg");
         mapHeight = map.getHeight() * 64;
@@ -66,12 +59,9 @@ public class GameBaseState extends BasicGameState {
         map.render(-mapXPosition, -mapYPosition);
         player.render();
         enemy.render();
-<<<<<<< Updated upstream
         
         lightMask.draw(0,0);
-=======
         inventory.render();
->>>>>>> Stashed changes
     }
 
     @Override
