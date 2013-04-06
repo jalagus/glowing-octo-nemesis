@@ -19,14 +19,15 @@ public class Player {
     Animation rightAnim;
     Animation leftAnim;
     Sound fuck;
-    public float x = 542;
-    public float y = 424;
+    public float x;
+    public float y;
     final float scale = 0.3f;
 
     private int animSpeed = 150;
 
-    public Player() {
-
+    public Player(float x, float y) {
+        this.x = x;
+        this.y = y;
     }
 
     public void init() throws SlickException {

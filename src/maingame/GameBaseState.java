@@ -21,7 +21,7 @@ public class GameBaseState extends BasicGameState {
     Sound gameMusic;
     
     public static TiledMap map;
-    public static Player player = new Player();
+    public static Player player = new Player(2590, 2590);
     PaussiEnemy paussiEnemy = new PaussiEnemy(1000, 1000);
     SharkEnemy sharkEnemy = new SharkEnemy(0, 0);
     BearEnemy bearEnemy = new BearEnemy(0, 1500);
@@ -49,7 +49,6 @@ public class GameBaseState extends BasicGameState {
 
     @Override
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-        player = new Player();
         player.init();
         inventory.init();
         map = new TiledMap("assets/area.tmx");
