@@ -4,8 +4,8 @@ import org.newdawn.slick.tiled.TiledMap;
 
 public class HelloWorld extends BasicGame {
 
-    TiledMap map;
-    Player player = new Player();
+    public static TiledMap map;
+    public Player player = new Player();
 
     public HelloWorld() {
         super("Glowing Octo Nemesis");
@@ -26,14 +26,14 @@ public class HelloWorld extends BasicGame {
 
     @Override
     public void render(GameContainer gc, Graphics g) throws SlickException {
-        map.render(0, 0);
+        map.render(0, 0, 0, 0, 16, 12);
         player.render();
     }
 
     public static void main(String[] args) throws SlickException {
         AppGameContainer app = new AppGameContainer(new HelloWorld());
 
-        app.setDisplayMode(800, 600, false);
+        app.setDisplayMode(1024, 768, false);
         app.start();
     }
 }
