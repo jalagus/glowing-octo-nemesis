@@ -11,6 +11,7 @@ import org.newdawn.slick.Sound;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.tiled.TiledMap;
+import zyklon.BearEnemy;
 import zyklon.PaussiEnemy;
 import zyklon.Inventory;
 import zyklon.SharkEnemy;
@@ -23,6 +24,7 @@ public class GameBaseState extends BasicGameState {
     public static Player player = new Player();
     PaussiEnemy paussiEnemy = new PaussiEnemy(1000, 1000);
     SharkEnemy sharkEnemy = new SharkEnemy(0, 0);
+    BearEnemy bearEnemy = new BearEnemy(0, 1500);
     public static int mapWidth;
     public static int mapHeight;
     public static int mapXPosition = 0;
@@ -56,7 +58,7 @@ public class GameBaseState extends BasicGameState {
         mapWidth = map.getWidth() * 64;
         paussiEnemy.init();
         sharkEnemy.init();
-
+        bearEnemy.init();
         
         testMask = new Image("assets/graphics/lightMask5.png");
     }
@@ -67,6 +69,7 @@ public class GameBaseState extends BasicGameState {
         player.render();
         paussiEnemy.render();
         sharkEnemy.render();
+        bearEnemy.render();
         
         Color fade = new Color(0, 0, 0, fading);
         testMask.draw(0, 0, fade);
@@ -90,13 +93,13 @@ public class GameBaseState extends BasicGameState {
         }
         
         
-        
         //lightMask.update(delta);
         
         Input input = gc.getInput();
         player.update(input, delta);
         paussiEnemy.update(delta);
         sharkEnemy.update(delta);
+        bearEnemy.update(delta);
         mapXPosition = (int) player.x - 542;
         mapYPosition = (int) player.y - 426;
         if (input.isKeyPressed(Input.KEY_ESCAPE)) {
