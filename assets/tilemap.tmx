@@ -1,11 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="16" height="10" tilewidth="64" tileheight="64">
+<map version="1.0" orientation="orthogonal" width="16" height="12" tilewidth="64" tileheight="64">
  <tileset firstgid="1" name="forest_tileset" tilewidth="64" tileheight="64">
   <image source="forest_tileset.png" width="1024" height="1024"/>
+  <tile id="234">
+   <properties>
+    <property name="blocked" value="true"/>
+   </properties>
+  </tile>
+  <tile id="250">
+   <properties>
+    <property name="blocked" value="true"/>
+   </properties>
+  </tile>
  </tileset>
- <layer name="Tile Layer 1" width="16" height="10">
+ <layer name="Tile Layer 1" width="16" height="12">
   <data encoding="base64" compression="zlib">
-   eJxjZGBgYKQBFqSRuYpEqGEGYhYkzEqie4WBWAQJi5LoRkL6CYWNMhCrIGHVAQxvUuwixw0ACN0CnQ==
+   eJxjZGBgYKQBFqSRuYpEqGEGYhYkzEqie4WBWAQJi5LoRkL6CYWNMhCrIGHVAQzvgbaL1hgAVGwCrQ==
+  </data>
+ </layer>
+ <layer name="Tile Layer 2" width="16" height="12">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgF9AK3gfgOBfpfA/EbCvT/BuI/FOgfjgAAPP0Fhg==
   </data>
  </layer>
 </map>
