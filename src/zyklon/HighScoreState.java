@@ -15,6 +15,7 @@ import org.newdawn.slick.state.StateBasedGame;
 public class HighScoreState extends BasicGameState {
 
     Image background;
+    Image table;
     
     UnicodeFont hsFont;
     UnicodeFont scoreFont;
@@ -33,6 +34,7 @@ public class HighScoreState extends BasicGameState {
     @Override
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
         background = new Image("assets/graphics/taustakuva_mustaharmaa.png");
+        table = new Image("assets/graphics/taustakuva_highscore.png");
         
         hsFont = new UnicodeFont("assets/menu.ttf", 80, false, false);  
         scoreFont = new UnicodeFont("assets/menu.ttf", 40, false, false);  
@@ -44,13 +46,14 @@ public class HighScoreState extends BasicGameState {
     @Override
     public void render(GameContainer gc, StateBasedGame sbg, Graphics grphcs) throws SlickException {
         background.draw(0,0);
+        table.draw(300, 80);
         
         hsFont.drawString(20, 20, "High Scores");
         
         for (int i = 1; i < 6; i++) {
             scoreFont.drawString(100, 100 + i * 40, "#" + i);
             scoreFont.drawString(170, 100 + i * 40, "Testi");            
-            scoreFont.drawString(400, 100 + i * 40, "1000 pts");            
+            scoreFont.drawString(340, 100 + i * 40, "1000 pts");            
         }
     }
 

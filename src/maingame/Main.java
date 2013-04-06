@@ -29,7 +29,7 @@ public class Main extends StateBasedGame {
     {
          AppGameContainer app = new AppGameContainer(new Main());
   
-         app.setDisplayMode(1024, 768, true);
+         app.setDisplayMode(1024, 768, false);
          app.start();
     }
   
