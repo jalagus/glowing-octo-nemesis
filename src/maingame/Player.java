@@ -16,8 +16,8 @@ public class Player {
     Animation rightAnim;
     Animation leftAnim;
     Sound fuck;
-    public float x = 0;
-    public float y = 0;
+    public float x = 542;
+    public float y = 424;
     final float scale = 0.3f;
     
     private int animSpeed = 150;
@@ -52,7 +52,7 @@ public class Player {
         fuck = new Sound("assets/fuck.ogg");
     }
 
-    float prevTileID = -1;
+    int prevTileID = -1;
 
     public void update(Input input, int delta) {
         rightAnim.update(delta);
@@ -71,7 +71,7 @@ public class Player {
             currentSprite = rightAnim.getCurrentFrame();
         }
 
-        int tileID = GameBaseState.map.getTileId((int) (x + xMovement + 20 + 512) / 64, (int) (y + 20 + 384) / 64, 1);
+        int tileID = GameBaseState.map.getTileId((int) (x + xMovement) / 64, (int) y / 64, 1);
         if (!TileInfo.tilePropertyExists(tileID, "blocked")){
             x += xMovement;
         }
@@ -84,7 +84,7 @@ public class Player {
             currentSprite = downAnim.getCurrentFrame();
         }
 
-        tileID = GameBaseState.map.getTileId((int) (x + 20 + 512) / 64, (int) (y + yMovement + 20 + 384) / 64, 1);
+        tileID = GameBaseState.map.getTileId((int) x / 64, (int) (y + yMovement) / 64, 1);
         if (!TileInfo.tilePropertyExists(tileID, "blocked")){
             y += yMovement;
         }
@@ -92,9 +92,10 @@ public class Player {
     }
 
     public void render() throws SlickException {
+        System.out.println(this);
         currentSprite.draw(512, 384);
 
-        int tileID = GameBaseState.map.getTileId((int) (x + 512) / 64, (int) (y + 384) / 64, 1);
+        int tileID = GameBaseState.map.getTileId((int) x / 64, (int) y / 64, 1);
         if (tileID != prevTileID) {
             System.out.println(tileID);
             prevTileID = tileID;
