@@ -3,6 +3,7 @@ package maingame;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.Sound;
@@ -24,6 +25,8 @@ public class GameBaseState extends BasicGameState {
     public static int mapYPosition = 0;
 
     int stateId = -1;
+
+    Image lightMask;
     
     public GameBaseState(int stateId) {
         this.stateId = stateId;
@@ -43,6 +46,9 @@ public class GameBaseState extends BasicGameState {
         mapHeight = map.getHeight() * 64;
         mapWidth = map.getWidth() * 64;
         enemy.init();
+        
+        lightMask = new Image("assets/graphics/lightMask.png");
+        
     }
 
     @Override
@@ -50,6 +56,8 @@ public class GameBaseState extends BasicGameState {
         map.render(-mapXPosition, -mapYPosition);
         player.render();
         enemy.render();
+        
+        lightMask.draw(0,0);
     }
 
     @Override

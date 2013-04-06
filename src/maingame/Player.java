@@ -11,6 +11,7 @@ import java.util.HashMap;
 
 public class Player {
     Image currentSprite;
+    
     Animation upAnim;
     Animation downAnim;
     Animation rightAnim;
@@ -48,7 +49,7 @@ public class Player {
             }, animSpeed);        
         
         currentSprite = downAnim.getCurrentFrame();
-
+        
         fuck = new Sound("assets/fuck.ogg");
     }
 
