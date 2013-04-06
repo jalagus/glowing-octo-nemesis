@@ -1,6 +1,7 @@
 package maingame;
 
 
+import org.newdawn.slick.Animation;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
@@ -28,7 +29,7 @@ public class GameBaseState extends BasicGameState {
 
     int stateId = -1;
 
-    Image lightMask;
+    Animation lightMask;
     
     public GameBaseState(int stateId) {
         this.stateId = stateId;
@@ -50,8 +51,16 @@ public class GameBaseState extends BasicGameState {
         mapWidth = map.getWidth() * 64;
         enemy.init();
         
-        lightMask = new Image("assets/graphics/lightMask.png");
+        lightMask = new Animation(new Image[] {
+            new Image("assets/graphics/lightMask1.png"),
+            new Image("assets/graphics/lightMask2.png"),
+            new Image("assets/graphics/lightMask3.png"),
+            new Image("assets/graphics/lightMask4.png"),
+            new Image("assets/graphics/lightMask5.png")
+            }, 2000);
         
+        lightMask.start();
+        lightMask.stopAt(4);
     }
 
     @Override
@@ -60,7 +69,7 @@ public class GameBaseState extends BasicGameState {
         player.render();
         enemy.render();
         
-        lightMask.draw(0,0);
+        lightMask.getCurrentFrame().draw(0,0);
         inventory.render();
     }
 
@@ -69,6 +78,8 @@ public class GameBaseState extends BasicGameState {
         if (!gameMusic.playing()) {
             gameMusic.loop(1.0f, 0.2f);
         }
+        
+        lightMask.update(delta);
         
         Input input = gc.getInput();
         player.update(input, delta);
