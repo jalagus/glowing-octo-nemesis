@@ -39,9 +39,9 @@ public class MainMenuState extends BasicGameState {
     }
   
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-        background = new Image("assets/bg.png");
+        background = new Image("assets/graphics/taustakuva_mustaharmaa.png");
         pi = new Image("assets/pi.png");
-        pieSlice = new Image("assets/pie.png");
+        pieSlice = new Image("assets/graphics/taustakuva_piirakka.png");
         
         menuFont = new UnicodeFont("assets/menu.ttf", 60, false, false);  
         headerFont = new UnicodeFont("assets/menu.ttf", 120, false, false);
@@ -59,13 +59,14 @@ public class MainMenuState extends BasicGameState {
         String credits = "Glowing Octo Nemesis";
         
         String newGameText = "New Game";
-        String exitGameText = "Exit Game";
         String highScoreText = "High Scores";
+        String exitGameText = "Exit Game";
         
         g.setColor(Color.black);
 
         background.draw(0,0);
         
+        pieSlice.draw(380, 240);
         pi.draw(380, 0);
         
         headerFont.drawString(40, 40, gameName);

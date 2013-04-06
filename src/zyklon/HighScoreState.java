@@ -31,7 +31,7 @@ public class HighScoreState extends BasicGameState {
 
     @Override
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-        background = new Image("data/bg.png");
+        background = new Image("assets/graphics/taustakuva_mustaharmaa.png");
         
         hsFont = new UnicodeFont("data/menu.ttf", 80, false, false);  
         scoreFont = new UnicodeFont("data/menu.ttf", 40, false, false);  
