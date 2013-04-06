@@ -14,8 +14,14 @@ public class TileInfo {
         setTileProperty(251, "blocked", true);
         setTileProperty(252, "blocked", true);
         setTileProperty(41, "event", 1);
-        setTileProperty(79, "pickup", 1);
-        setTileProperty(69, "pickup", 1);
+        setTileProperty(28, "pickup", 1);
+        setTileProperty(31, "pickup", 1);
+        setTileProperty(32, "pickup", 1);
+        setTileProperty(33, "pickup", 1);
+        setTileProperty(34, "pickup", 1);
+        setTileProperty(35, "pickup", 1);
+        setTileProperty(39, "pickup", 1);
+        setTileProperty(40, "pickup", 1);
     }
 
     public static Object getTileProperty(int tileID, String propertyName) {
