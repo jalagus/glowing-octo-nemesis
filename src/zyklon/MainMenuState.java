@@ -114,6 +114,7 @@ public class MainMenuState extends BasicGameState {
             
             switch (activeOption) {
                 case 0:
+                    sbg.enterState(BaseSlick2D.GAMESTATE);
                     break;
                 case 1:
                     sbg.enterState(BaseSlick2D.HIGHSCORESTATE);

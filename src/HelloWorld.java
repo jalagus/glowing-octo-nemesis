@@ -1,3 +1,4 @@
+import maingame.Player;
 import org.newdawn.slick.*;
 import org.newdawn.slick.tiled.TiledMap;
 
