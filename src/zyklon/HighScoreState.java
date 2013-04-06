@@ -50,10 +50,12 @@ public class HighScoreState extends BasicGameState {
         
         hsFont.drawString(20, 20, "High Scores");
         
-        for (int i = 1; i < 6; i++) {
-            scoreFont.drawString(100, 100 + i * 40, "#" + i);
-            scoreFont.drawString(170, 100 + i * 40, "Testi");            
-            scoreFont.drawString(340, 100 + i * 40, "1000 pts");            
+        HighScore[] scores = new HighScoreLoader().highscores();
+        
+        for (int i = 0; i < scores.length; i++) {
+            scoreFont.drawString(100, 100 + i * 40, "#" + (i + 1));
+            scoreFont.drawString(170, 100 + i * 40, scores[i].name);            
+            scoreFont.drawString(340, 100 + i * 40, scores[i].score + " pts");            
         }
     }
 

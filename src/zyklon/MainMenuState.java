@@ -7,6 +7,7 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.Sound;
 import org.newdawn.slick.UnicodeFont;
 import org.newdawn.slick.font.effects.ColorEffect;
 import org.newdawn.slick.state.BasicGameState;
@@ -21,6 +22,9 @@ public class MainMenuState extends BasicGameState {
     UnicodeFont menuFont;
     UnicodeFont headerFont;
     UnicodeFont creditFont;
+    
+    Sound menuChangeSound;
+    Sound menuMusic;
         
     int activeOption = 0;
     
@@ -51,6 +55,10 @@ public class MainMenuState extends BasicGameState {
         menuFont.getEffects().add(new ColorEffect(java.awt.Color.white));
         headerFont.getEffects().add(new ColorEffect(java.awt.Color.white));
         creditFont.getEffects().add(new ColorEffect(java.awt.Color.white));
+        
+        menuChangeSound = new Sound("assets/audio/menuBlop.ogg");
+        menuMusic = new Sound("assets/audio/menuMusic.ogg");
+        
     }
   
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
@@ -93,6 +101,10 @@ public class MainMenuState extends BasicGameState {
     }
   
     public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
+        if (!menuMusic.playing()) {
+            //menuMusic.loop();
+        }
+        
         menuFont.loadGlyphs();
         headerFont.loadGlyphs();
         creditFont.loadGlyphs();
@@ -100,12 +112,16 @@ public class MainMenuState extends BasicGameState {
         Input input = gc.getInput();    
         
         if (input.isKeyPressed(Input.KEY_DOWN)) {
+            menuChangeSound.play();
+            
             activeOption++;
             if (activeOption > 2) {
                 activeOption = 0;
             }
         }
         else if (input.isKeyPressed(Input.KEY_UP)) {
+            menuChangeSound.play();
+            
             activeOption--;
             if (activeOption < 0) {
                 activeOption = 2;
@@ -115,6 +131,7 @@ public class MainMenuState extends BasicGameState {
             
             switch (activeOption) {
                 case 0:
+                    menuMusic.stop();
                     sbg.enterState(Main.GAMESTATE);
                     break;
                 case 1:

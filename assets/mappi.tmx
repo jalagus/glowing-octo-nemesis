@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="64" height="64" tilewidth="64" tileheight="64">
+ <tileset firstgid="1" name="Puu" tilewidth="64" tileheight="64">
+  <image source="../../Tilet/Puu.png" width="64" height="64"/>
+ </tileset>
+ <tileset firstgid="2" name="kuusi" tilewidth="64" tileheight="64">
+  <image source="Tilet/kuusi.png" width="64" height="64"/>
+ </tileset>
+ <tileset firstgid="3" name="ruoho" tilewidth="64" tileheight="64">
+  <image source="../../Tilet/ruoho.png" width="64" height="64"/>
+ </tileset>
+ <tileset firstgid="4" name="kivi" tilewidth="64" tileheight="64">
+  <image source="../../Tilet/kivi.png" width="64" height="64"/>
+ </tileset>
+ <tileset firstgid="5" name="sum" tilewidth="64" tileheight="64">
+  <image source="../../Tilet/sum.png" width="640" height="780"/>
+ </tileset>
+ <tileset firstgid="125" name="trees_plants_0" tilewidth="64" tileheight="64">
+  <image source="../../Tilet/trees_plants_0.png" width="512" height="512"/>
+ </tileset>
+ <tileset firstgid="189" name="hautakivi" tilewidth="64" tileheight="64">
+  <image source="../../Tilet/hautakivi.png" width="64" height="64"/>
+ </tileset>
+ <tileset firstgid="190" name="kattokeski" tilewidth="64" tileheight="64">
+  <image source="Tilet/kattokeski.png" width="64" height="64"/>
+ </tileset>
+ <tileset firstgid="191" name="taloa" tilewidth="64" tileheight="64">
+  <image source="Tilet/taloa.png" width="64" height="64"/>
+ </tileset>
+ <tileset firstgid="192" name="kattooikea" tilewidth="64" tileheight="64">
+  <image source="Tilet/kattooikea.png" width="64" height="64"/>
+ </tileset>
+ <tileset firstgid="193" name="kattovasen" tilewidth="64" tileheight="64">
+  <image source="Tilet/kattovasen.png" width="64" height="64"/>
+ </tileset>
+ <tileset firstgid="194" name="ovi" tilewidth="64" tileheight="64">
+  <image source="Tilet/ovi.png" width="64" height="64"/>
+ </tileset>
+ <tileset firstgid="195" name="kaivo" tilewidth="64" tileheight="64">
+  <image source="Tilet/kaivo.png" width="64" height="64"/>
+ </tileset>
+ <tileset firstgid="196" name="tieY" tilewidth="64" tileheight="64">
+  <image source="Tilet/tieY.png" width="64" height="64"/>
+ </tileset>
+ <tileset firstgid="197" name="multa" tilewidth="64" tileheight="64">
+  <image source="Tilet/multa.png" width="64" height="64"/>
+ </tileset>
+ <tileset firstgid="198" name="nuotio" tilewidth="64" tileheight="64">
+  <image source="Tilet/nuotio.png" width="64" height="64"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="64" height="64">
+  <data encoding="base64" compression="zlib">
+   eJztmo1ugzAMhF2293+krfvjuVakITHr7DgMp6y+k6zQEBI+Lk6o2ouIXIpHVZGf/OSvK/KTn/x1RX7yk7+uyE9+8tcV+clP/roiP/nJP26cs/0mMZL/qSPIP0bkJ/+9+N9u8XKLKzhXgf91E1X536Uu/xKfRn01/g+pzV/d/wr83vv9o7//n1XkJz/564r85D+afwqM2dM+U0fxW31MgTaRfrK0jPfshATOoz57xu9pMyWExdHS9jqLA9VH5oqlpc3XgbHyt/wWp9wrj9d7Rhn8PUL8eo7qe24pmjOZ/NY80Meyqethmn9CH3tCz/Je/rfmv+ezxYrqvbmQ7f9aorwX0A4J+b491t578wC9K4z2P7L+eZ7NqmzVe8pc/0V+e9/K92je/Ad+pL37nl4HevjXa639ZFT+o1Ia9VrrfaNcj+Y/6jPb/+jz2F7X2uN71n8tPRey8j/qd8R/tB7OIFqsWmfwX7cbqRH5L+pzj/+WZ5F3Yl2H5lD2/mdxCTj/SP7vjT3/6/pLZHz//wYViAUh
+  </data>
+ </layer>
+</map>
