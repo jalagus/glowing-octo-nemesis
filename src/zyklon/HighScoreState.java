@@ -1,5 +1,6 @@
 package zyklon;
 
+import maingame.Main;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
@@ -20,7 +21,7 @@ public class HighScoreState extends BasicGameState {
     
     int stateId = -1;
     
-    HighScoreState(int stateId) {
+    public HighScoreState(int stateId) {
         this.stateId = stateId;
     }
     
@@ -61,7 +62,7 @@ public class HighScoreState extends BasicGameState {
         Input input = gc.getInput();
         
         if (input.isKeyPressed(Input.KEY_ESCAPE)) {
-            sbg.enterState(BaseSlick2D.MAINMENUSTATE);
+            sbg.enterState(Main.MAINMENUSTATE);
         }
     }
 

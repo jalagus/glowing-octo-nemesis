@@ -1,20 +1,22 @@
-package zyklon;
+package maingame;
 
 import maingame.GameBaseState;
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
+import zyklon.HighScoreState;
+import zyklon.MainMenuState;
 
-public class BaseSlick2D extends StateBasedGame {
+public class Main extends StateBasedGame {
   
     public static final int MAINMENUSTATE = 0;
     public static final int HIGHSCORESTATE = 1;
     public static final int GAMESTATE = 2;
   
-    public BaseSlick2D()
+    public Main()
     {
-        super("SlickBlocks");
+        super("Zyklon Pie");
   
         this.addState(new MainMenuState(MAINMENUSTATE));
         this.addState(new HighScoreState(HIGHSCORESTATE));
@@ -25,7 +27,7 @@ public class BaseSlick2D extends StateBasedGame {
   
     public static void main(String[] args) throws SlickException
     {
-         AppGameContainer app = new AppGameContainer(new BaseSlick2D());
+         AppGameContainer app = new AppGameContainer(new Main());
   
          app.setDisplayMode(1024, 768, true);
          app.start();

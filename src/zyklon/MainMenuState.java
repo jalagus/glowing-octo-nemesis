@@ -1,5 +1,6 @@
 package zyklon;
 
+import maingame.Main;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -28,7 +29,7 @@ public class MainMenuState extends BasicGameState {
     int menuPositionX = 150;
     int menuPositionY = 220;
   
-    MainMenuState( int stateID ) 
+    public MainMenuState( int stateID ) 
     {
        this.stateID = stateID;
     }
@@ -114,10 +115,10 @@ public class MainMenuState extends BasicGameState {
             
             switch (activeOption) {
                 case 0:
-                    sbg.enterState(BaseSlick2D.GAMESTATE);
+                    sbg.enterState(Main.GAMESTATE);
                     break;
                 case 1:
-                    sbg.enterState(BaseSlick2D.HIGHSCORESTATE);
+                    sbg.enterState(Main.HIGHSCORESTATE);
                     break;
                 case 2:
                     gc.exit();
