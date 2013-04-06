@@ -1,7 +1,6 @@
 package maingame;
 
 import org.newdawn.slick.Animation;
-import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
@@ -29,12 +28,9 @@ public class GameBaseState extends BasicGameState {
     public static int mapYPosition = 0;
     Inventory inventory = new Inventory();
 
-    private int elapsedTime = 0;
-    private float fading = 0;
-    
     int stateId = -1;
-    
-    Image testMask;
+
+    Animation lightMask;
     
     public GameBaseState(int stateId) {
         this.stateId = stateId;
@@ -56,9 +52,17 @@ public class GameBaseState extends BasicGameState {
         mapWidth = map.getWidth() * 64;
         paussiEnemy.init();
         sharkEnemy.init();
-
         
-        testMask = new Image("assets/graphics/lightMask5.png");
+        lightMask = new Animation(new Image[] {
+            new Image("assets/graphics/lightMask1.png"),
+            new Image("assets/graphics/lightMask2.png"),
+            new Image("assets/graphics/lightMask3.png"),
+            new Image("assets/graphics/lightMask4.png"),
+            new Image("assets/graphics/lightMask5.png")
+            }, 2000);
+        
+        lightMask.start();
+        lightMask.stopAt(4);
     }
 
     @Override
@@ -68,30 +72,17 @@ public class GameBaseState extends BasicGameState {
         paussiEnemy.render();
         sharkEnemy.render();
         
-        Color fade = new Color(0, 0, 0, fading);
-        testMask.draw(0, 0, fade);
-        
+        lightMask.getCurrentFrame().draw(0, 0);
         inventory.render();
     }
 
     @Override
     public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
-        elapsedTime += delta;
-        
         if (!gameMusic.playing()) {
             gameMusic.loop(1.0f, 0.2f);
         }
         
-        if (elapsedTime > 500) {
-            if (fading < 1) {
-                fading += 0.02f;
-            }
-            elapsedTime = 0;
-        }
-        
-        
-        
-        //lightMask.update(delta);
+        lightMask.update(delta);
         
         Input input = gc.getInput();
         player.update(input, delta);
