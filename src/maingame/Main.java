@@ -6,12 +6,14 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 import zyklon.HighScoreState;
 import zyklon.MainMenuState;
+import zyklon.PokemonFightState;
 
 public class Main extends StateBasedGame {
   
     public static final int MAINMENUSTATE = 0;
     public static final int HIGHSCORESTATE = 1;
     public static final int GAMESTATE = 2;
+    public static final int FIGHTSTATE = 3;
   
     public Main()
     {
@@ -20,15 +22,16 @@ public class Main extends StateBasedGame {
         this.addState(new MainMenuState(MAINMENUSTATE));
         this.addState(new HighScoreState(HIGHSCORESTATE));
         this.addState(new GameBaseState(GAMESTATE));
+        this.addState(new PokemonFightState(FIGHTSTATE));
         
-        this.enterState(MAINMENUSTATE);
+        this.enterState(FIGHTSTATE);
     }
   
     public static void main(String[] args) throws SlickException
     {
          AppGameContainer app = new AppGameContainer(new Main());
   
-         app.setDisplayMode(1024, 768, false);
+         app.setDisplayMode(1024, 768, true);
          app.start();
     }
   
