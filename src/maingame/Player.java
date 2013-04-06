@@ -7,10 +7,6 @@ import org.newdawn.slick.SlickException;
 import zyklon.TileInfo;
 
 public class Player {
-    Image leftSprite;
-    Image rightSprite;
-    Image upSprite;
-    Image downSprite;
     Image currentSprite;
     
     Animation upAnim;
