@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="64" height="64" tilewidth="64" tileheight="64">
+ <tileset firstgid="1" name="uudetkuvat" tilewidth="64" tileheight="64">
+  <image source="Tilet/uudetkuvat.png" trans="ffffff" width="640" height="640"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="64" height="64">
+  <data encoding="base64" compression="zlib">
+   eJzt2DEOwCAIQFFS2/T+N+4RHJRC4hv+ziPBwRERI7FrsTu5TDs/Pz8/Pz8/f0f/uyl+fn5+/r3+7Pj5+fn5+fn5+fn5+fnP8M/+L1er9nX2d9gTP3/l/Ve/Eaf7q+Ovn4FfkiRJXXqSq/bx8/Pz8/Pz8/Pz8/Pz8//h/wAXVzBf
+  </data>
+ </layer>
+ <layer name="Tile Layer 2" width="64" height="64">
+  <data encoding="base64" compression="zlib">
+   eJzlW9lu4zAM9HvS3fahTdP8/38uBEQAMctjSB0x0AGE2pYoa8RDlJW+H8fxvrBcBsvn4tLGeGbgeGf3fUb+V3G9k7/X/w/cj8zb5fn37Vk8ZPn/TYyD0T/yjpCZF8n/YrR5hf17HLLz0WHxi/Ab/V9C45+xca99xF/Ot9buzamz8C2ur0H9aqzQ/31yfyvsXva9y/4j/4/iXwTGJzB2tX6j9efV0HI2RobtO8N/ph169iDrKvxZWPxHY9BMn7Ly9iw0/2D1/1F4n4YoBmix09u7jOJM/s/mf6v5s/1+TBpDBZn9cyQr+Te/X8FJy3P6WCqQ4/8SZZR/Q+ePPr8jVlhxF+fPmjePO4494r8CVX1b/SBXjb9lE2flr7XBdWEX/8jesb6y7lfyYuRgAf2pqv9XxXkJGQPauB9Qz6wDDH8P1dgm9RDp21orJFg7z/I/Sy4UgeV/e5YLyMr2EWdN55bMrtgZ8Wf7y9p/FdeBooHh79m+vM/wx3jK6pvx6YxclNvJ6+ge+c/4/obroMXjC/4iuhxyjWKavLb8Iav/jG9b/CO+HTeQQ2h2bF1n858VYO3/BvcRf0u/kQ0/hOyO758aj4dSOlj9e7qXz7z23vnfrLmx+Hv3mpzFT7uWz7Q2fb88wpE9C8vyn6n/m9HG4u/NR3WuZum/I5PjWM9m6B9h9TW6/lvrH6N/r+4V8e9+xGdkfYw4b15c9/h3PI7/+bO2NAKGv6brTP6L9Vq7TH40ExX7/3bkWPv3+kYZC17+yILZ20Rt8PtHpHfZjlkPZ2GHPXkc8FuLxtHjv2P8GVh6jnzc8hH8m7XjGYjeifsAlGP5y3MRlMd+Kpg1Hw0WZw193NnfYnn8tXgU9YPAGMXIsH1jm2hNy+RAs6Dt5TywXLVn3vMV/Jl2Wf5VeOu+xR/lUVYi861H2nzE35vDyP9lfVZvkb80ZGIZ69tV34rGwq55zHoYjXGlLTMxn4lz1Xn24kgV2t6m+pvhBjkW6zxTtsmcX47G/8p5T9ZX+nPtXVn9/4HCyFZ83csDJBjf0uRx/2a9I9JPl+3tVvp6te/OTfv2IfmjbjVU9M+MraNyPq69H9c6TzbiYM2FlPfGNCM/lHaY7Y/lz+jfkm9g1n/v+5v2+6oZ+yMt/t9FXcWG+/yM2n+VX9+XMsjav+f7lrzEiv+/wHmy+Hu+KPOKT1Hn6TDiwuifXcu0mKH9RikLTz/I3/N7GYM0+5c52q59HAN2/av2rclm+I+uD9n8q+FH1Gkc0A7wHvMnPHvo3KO8WgPjL9lvXRKe/Wfz8artWDLemX4Vo/lP1PdvL/8Akes65A==
+  </data>
+ </layer>
+</map>
