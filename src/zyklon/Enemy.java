@@ -11,6 +11,8 @@ public class Enemy {
     final float scale = 0.1f;
     int hp;
     Image sprite;
+    float xScalar;
+    float yScalar;
     
     public Enemy(int hp, float x, float y) {
         this.hp = hp;
@@ -20,6 +22,8 @@ public class Enemy {
 
     public void init() throws SlickException {
         sprite = new Image("assets/paussi.jpg");
+        xScalar = GameBaseState.mapWidth / 1024f;
+        yScalar = GameBaseState.mapHeight / 768f;
     }
 
     public void update(int delta) {
@@ -45,7 +49,14 @@ public class Enemy {
     }
 
     public void render() {
-        sprite.draw(x, y);
+        sprite.draw(x - GameBaseState.mapXPosition - 200, y - GameBaseState.mapYPosition - 115);
     }
 
+    @Override
+    public String toString() {
+        return "Enemy{" +
+                "x=" + x +
+                ", y=" + y +
+                '}';
+    }
 }

@@ -18,6 +18,10 @@ public class GameBaseState extends BasicGameState {
     public static TiledMap map;
     public static Player player = new Player();
     Enemy enemy = new Enemy(1, 1000, 1000);
+    public static int mapWidth;
+    public static int mapHeight;
+    public static int mapXPosition = 0;
+    public static int mapYPosition = 0;
 
     int stateId = -1;
     
@@ -29,20 +33,21 @@ public class GameBaseState extends BasicGameState {
     public int getID() {
         return this.stateId;
     }
-    
+
     @Override
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
         player = new Player();
         player.init();
-        enemy.init();
         map = new TiledMap("assets/tilemap.tmx");
-        
         gameMusic = new Sound("assets/audio/gameMusic.ogg");
+        mapHeight = map.getHeight() * 64;
+        mapWidth = map.getWidth() * 64;
+        enemy.init();
     }
 
     @Override
     public void render(GameContainer gc, StateBasedGame sbg, Graphics grphcs) throws SlickException {
-        map.render((int) -(player.x - 542), (int) -(player.y - 426));
+        map.render(-mapXPosition, -mapYPosition);
         player.render();
         enemy.render();
     }
@@ -56,6 +61,8 @@ public class GameBaseState extends BasicGameState {
         Input input = gc.getInput();
         player.update(input, delta);
         enemy.update(delta);
+        mapXPosition = (int) player.x - 542;
+        mapYPosition = (int) player.y - 426;
         if (input.isKeyPressed(Input.KEY_ESCAPE)) {
             gc.exit();
         }

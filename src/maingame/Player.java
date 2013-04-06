@@ -92,7 +92,6 @@ public class Player {
     }
 
     public void render() throws SlickException {
-        System.out.println(this);
         currentSprite.draw(512, 384);
 
         int tileID = GameBaseState.map.getTileId((int) x / 64, (int) y / 64, 1);
