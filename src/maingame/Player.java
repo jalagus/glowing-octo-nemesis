@@ -4,16 +4,18 @@ import org.newdawn.slick.Animation;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.Sound;
 import zyklon.TileInfo;
+
+import java.util.HashMap;
 
 public class Player {
     Image currentSprite;
-    
     Animation upAnim;
     Animation downAnim;
     Animation rightAnim;
     Animation leftAnim;
-    
+    Sound fuck;
     public float x = 0;
     public float y = 0;
     final float scale = 0.3f;
@@ -46,7 +48,11 @@ public class Player {
             }, animSpeed);        
         
         currentSprite = downAnim.getCurrentFrame();
+
+        fuck = new Sound("assets/fuck.ogg");
     }
+
+    float prevTileID = -1;
 
     public void update(Input input, int delta) {
         rightAnim.update(delta);
@@ -82,10 +88,21 @@ public class Player {
         if (!TileInfo.tilePropertyExists(tileID, "blocked")){
             y += yMovement;
         }
+
     }
 
-    public void render() {
+    public void render() throws SlickException {
         currentSprite.draw(512, 384);
+
+        int tileID = GameBaseState.map.getTileId((int) (x + 512) / 64, (int) (y + 384) / 64, 1);
+        if (tileID != prevTileID) {
+            System.out.println(tileID);
+            prevTileID = tileID;
+        }
+        if (TileInfo.tilePropertyExists(tileID, "event")) {
+            int eventID = (Integer) TileInfo.getTileProperty(tileID, "event");
+            if (!fuck.playing()) fuck.play();
+        }
     }
 
     @Override
