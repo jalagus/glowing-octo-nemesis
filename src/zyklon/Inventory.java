@@ -6,6 +6,7 @@ public class Inventory {
     
     Image lakka;
     Image voi;
+    Image inv;
     static boolean lakkab = false;
     static boolean voib = false;
     
@@ -13,6 +14,7 @@ public class Inventory {
     }
     
     public void init() throws SlickException {
+        inv = new Image("assets/graphics/inventory.png");
         lakka = new Image("assets/graphics/lakka.png");
         voi = new Image("assets/graphics/voi.png");
     }
@@ -25,10 +27,11 @@ public class Inventory {
     }
     
     public void render() {
+        inv.draw(754,0);
         if(lakkab)
-            lakka.draw(960,0);
+            lakka.draw(960,67);
         if(voib)
-            voi.draw(896,0);
+            voi.draw(768,65);
     }
     
 }
