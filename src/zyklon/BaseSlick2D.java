@@ -1,4 +1,4 @@
-package baseslick2d;
+package zyklon;
 
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.GameContainer;

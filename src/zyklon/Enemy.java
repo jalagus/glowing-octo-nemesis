@@ -1,4 +1,4 @@
-package baseslick2d;
+package zyklon;
 
 public class Enemy {
     

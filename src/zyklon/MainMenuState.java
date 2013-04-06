@@ -1,4 +1,4 @@
-package baseslick2d;
+package zyklon;
 
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
@@ -15,6 +15,7 @@ public class MainMenuState extends BasicGameState {
   
     Image background;
     Image pi;
+    Image pieSlice;
     
     UnicodeFont menuFont;
     UnicodeFont headerFont;
@@ -38,12 +39,13 @@ public class MainMenuState extends BasicGameState {
     }
   
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-        background = new Image("data/bg.png");
-        pi = new Image("data/pi.png");
+        background = new Image("assets/bg.png");
+        pi = new Image("assets/pi.png");
+        pieSlice = new Image("assets/pie.png");
         
-        menuFont = new UnicodeFont("data/menu.ttf", 60, false, false);  
-        headerFont = new UnicodeFont("data/menu.ttf", 120, false, false);
-        creditFont = new UnicodeFont("data/menu.ttf", 30, false, false);
+        menuFont = new UnicodeFont("assets/menu.ttf", 60, false, false);  
+        headerFont = new UnicodeFont("assets/menu.ttf", 120, false, false);
+        creditFont = new UnicodeFont("assets/menu.ttf", 30, false, false);
         
         menuFont.getEffects().add(new ColorEffect(java.awt.Color.white));
         headerFont.getEffects().add(new ColorEffect(java.awt.Color.white));

@@ -10,3 +10,7 @@
 lib/
 .DS_Store
 
+build/
+nbproject/
+build.xml
+manifest.mf
