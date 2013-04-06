@@ -39,10 +39,22 @@ public class Inventory {
     }
     
     public static void pickup(int i) {
-        if(i == 79)
-            lakkab = true;
-        if(i == 69)
+        if(i == 40)
+            sokerib = true;
+        if(i == 28)
             voib = true;
+        if(i == 39)
+            puolukkab = true;
+        if(i == 35)
+            mustikkab = true;
+        if(i == 34)
+            munatb = true;
+        if(i == 33)
+            maitob = true;
+        if(i == 32)
+            lakkab = true;
+        if(i == 31)
+            jauhob = true;
     }
     
     public void render() {
