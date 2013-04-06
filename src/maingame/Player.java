@@ -39,11 +39,9 @@ public class Player {
             currentSprite = rightSprite;
         }
 
-        int tileID = GameBaseState.map.getTileId((int) (x + xMovement + 20) / 64, (int) (y + 20) / 64, 1);
+        int tileID = GameBaseState.map.getTileId((int) (512 + xMovement + 20) / 64, (384 + 20) / 64, 1);
         if (!TileInfo.tilePropertyExists(tileID, "blocked")){
             x += xMovement;
-            if (x < 0) x = 0;
-            else if (x > 964) x = 964;
         }
 
         if (input.isKeyDown(Input.KEY_W)) {
@@ -54,16 +52,14 @@ public class Player {
             currentSprite = downSprite;
         }
 
-        tileID = GameBaseState.map.getTileId((int) (x + 20) / 64, (int) (y + yMovement + 20) / 64, 1);
+        tileID = GameBaseState.map.getTileId((512 + 20) / 64, (int) (384 + yMovement + 20) / 64, 1);
         if (!TileInfo.tilePropertyExists(tileID, "blocked")){
             y += yMovement;
-            if (y < 0) y = 0;
-            else if (y > 728) y = 728;
         }
     }
 
     public void render() {
-        currentSprite.draw(x, y);
+        currentSprite.draw(512, 384);
     }
 
     @Override
