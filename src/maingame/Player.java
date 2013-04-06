@@ -3,6 +3,7 @@ package maingame;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
+import zyklon.TileInfo;
 
 public class Player {
     Image leftSprite;
@@ -38,7 +39,7 @@ public class Player {
             currentSprite = rightSprite;
         }
 
-        int tileID = HelloWorld.map.getTileId((int) (x + xMovement + 20) / 64, (int) (y + 20) / 64, 1);
+        int tileID = GameBaseState.map.getTileId((int) (x + xMovement + 20) / 64, (int) (y + 20) / 64, 1);
         if (!TileInfo.tilePropertyExists(tileID, "blocked")){
             x += xMovement;
             if (x < 0) x = 0;
@@ -53,7 +54,7 @@ public class Player {
             currentSprite = downSprite;
         }
 
-        tileID = HelloWorld.map.getTileId((int) (x + 20) / 64, (int) (y + yMovement + 20) / 64, 1);
+        tileID = GameBaseState.map.getTileId((int) (x + 20) / 64, (int) (y + yMovement + 20) / 64, 1);
         if (!TileInfo.tilePropertyExists(tileID, "blocked")){
             y += yMovement;
             if (y < 0) y = 0;
