@@ -50,7 +50,7 @@ public class GameBaseState extends BasicGameState {
         player = new Player();
         player.init();
         inventory.init();
-        map = new TiledMap("assets/tilemap.tmx");
+        map = new TiledMap("assets/area.tmx");
         gameMusic = new Sound("assets/audio/gameMusic.ogg");
         mapHeight = map.getHeight() * 64;
         mapWidth = map.getWidth() * 64;
