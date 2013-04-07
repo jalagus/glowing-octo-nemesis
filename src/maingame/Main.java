@@ -25,6 +25,9 @@ public class Main extends StateBasedGame {
         this.addState(new GameBaseState(GAMESTATE));
         this.addState(new PokemonFightState(FIGHTSTATE));
         
+
+        this.enterState(GAMESTATE);
+
         PokemonFightState temp = (PokemonFightState) this.getState(FIGHTSTATE);
         
         Enemy en = new Enemy();
@@ -36,6 +39,7 @@ public class Main extends StateBasedGame {
         temp.setEnemyAndPlayer(new Player(0,0), en);
         
         this.enterState(FIGHTSTATE);
+
     }
   
     public static void main(String[] args) throws SlickException
