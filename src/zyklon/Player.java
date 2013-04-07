@@ -7,11 +7,17 @@ import static zyklon.MoveTile.map;
 
 public class Player extends GraphicEntity {
     private static final int ANIMATION_SPEED = 150;
+    
+    public int stamina;
+    public int maxStamina;
+    
 
     Sound fuck;
 
     public Player(float x, float y) {
         super("Mummu", 200, 200, x, y, 0.3f, 64, 64);
+        
+        this.stamina = 200;
     }
 
     public void init() throws SlickException {

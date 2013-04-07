@@ -99,9 +99,9 @@ public class PokemonFightState extends BasicGameState {
         }
 
         menuFont.drawString(50, 700, "Attack");
-        menuFont.drawString(190, 700, "Super Attack");
-        menuFont.drawString(420, 700, "Hyper Attack");
-        menuFont.drawString(650, 700, "Super Hyper Attack");
+        menuFont.drawString(190, 700, "Super Atk " + (player.stamina / 20));
+        menuFont.drawString(420, 700, "Hyper Atk " + (player.stamina / 40));
+        menuFont.drawString(650, 700, "Super Hyper Atk " + (player.stamina / 60));
 
     }
 
@@ -131,19 +131,24 @@ public class PokemonFightState extends BasicGameState {
             }
         }
         else if (input.isKeyPressed(Input.KEY_ENTER)) {
-            enemy.hp = enemy.hp - (20 * menuOption);
-            player.hp = player.hp - 10;
+            if ((player.stamina - (20 * menuOption)) >= 0) {
 
-            if (enemy.hp < 1) {
-                enemy.hp = 0;
-                fightMusic.stop();
-                sbg.enterState(Main.GAMESTATE);
-            }
+                enemy.hp = enemy.hp - ((10 * menuOption) + 10);
+                player.stamina -= (20 * menuOption);
 
-            if (player.hp < 1) {
-                player.hp = 0;
-                fightMusic.stop();
-                sbg.enterState(Main.GAMESTATE);
+                player.hp = player.hp - 10;
+
+                if (enemy.hp < 1) {
+                    enemy.hp = 0;
+                    fightMusic.stop();
+                    sbg.enterState(Main.GAMESTATE);
+                }
+
+                if (player.hp < 1) {
+                    player.hp = 0;
+                    fightMusic.stop();
+                    sbg.enterState(Main.GAMESTATE);
+                }
             }
 
         }
