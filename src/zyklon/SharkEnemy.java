@@ -1,77 +1,56 @@
 package zyklon;
 
-import maingame.GameBaseState;
 import org.newdawn.slick.Animation;
+import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.state.StateBasedGame;
 
-public class SharkEnemy extends Enemy {
-
-    float x;
-    float y;
-    final float scale = 0.15f;
-    Image currentSprite;
-    Animation leftAnim;
-    Animation rightAnim;
-    private static final int animSpeed = 150;
+public class SharkEnemy extends GraphicEntity {
+    private static final int ANIMATION_SPEED = 150;
 
     public SharkEnemy(float x, float y) {
-        this.x = x;
-        this.y = y;
-        
-        super.name = "Haikala";
-        super.hp = 100;
-        super.maxHp = 100;
-        super.fightGraphic = "assets/graphics/taistelureunat_hai.png";
+        super("Haikala", 100, 100, x, y, 0.15f, 128, 64);
     }
 
     public void init() throws SlickException {
+        super.init(new Image("assets/graphics/taistelureunat_hai.png"));
 
-        
-        
-        leftAnim = new Animation(new Image[]{
+        Animation left = new Animation(new Image[]{
                 new Image("assets/graphics/hai_left_stationary.png"),
                 new Image("assets/graphics/hai_left_swim.png")
-        }, animSpeed);
-        rightAnim = new Animation(new Image[]{
+        }, ANIMATION_SPEED);
+        Animation right = new Animation(new Image[]{
                 new Image("assets/graphics/hai_right_stationary.png"),
                 new Image("assets/graphics/hai_right_swim.png")
-        }, animSpeed);
-        currentSprite = leftAnim.getCurrentFrame();
+        }, ANIMATION_SPEED);
+        setAnimations(left, right, null, null);
+        currentSprite = left.getCurrentFrame();
     }
 
-    public void update(int delta) {
-        leftAnim.update(delta);
-        rightAnim.update(delta);
+    @Override
+    public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
+        super.update(container, game, delta);
         runAi(GameBaseState.player.x, GameBaseState.player.y, delta);
     }
 
     public void runAi(float px, float py, int delta) {
         if (py > y) {
             y += scale * delta;
+            if (downAnimation != null) currentSprite = downAnimation.getCurrentFrame();
         }
         if (px > x) {
             x += scale * delta;
-            currentSprite = rightAnim.getCurrentFrame();
+            if (rightAnimation != null) currentSprite = rightAnimation.getCurrentFrame();
         }
         if (py < y) {
             y -= scale * delta;
+            if (upAnimation != null) currentSprite = upAnimation.getCurrentFrame();
         }
         if (px < x) {
             x -= scale * delta;
-            currentSprite = leftAnim.getCurrentFrame();
+            if (leftAnimation != null) currentSprite = leftAnimation.getCurrentFrame();
         }
     }
 
-    public void render() {
-        currentSprite.draw(x - GameBaseState.mapXPosition - 64, y - GameBaseState.mapYPosition - 32);
-    }
-
-    @Override
-    public String toString() {
-        return "SharkEnemy{" +
-                "x=" + x +
-                ", y=" + y +
-                '}';
-    }
 }

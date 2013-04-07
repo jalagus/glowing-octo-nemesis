@@ -1,87 +1,62 @@
-package maingame;
+package zyklon;
 
-import org.newdawn.slick.Animation;
-import org.newdawn.slick.Image;
-import org.newdawn.slick.Input;
-import org.newdawn.slick.SlickException;
-import org.newdawn.slick.Sound;
-import zyklon.TileInfo;
+import org.newdawn.slick.*;
+import org.newdawn.slick.state.StateBasedGame;
 
-import java.util.HashMap;
+import static zyklon.MoveTile.map;
 
-import static maingame.MoveTile.map;
+public class Player extends GraphicEntity {
+    private static final int ANIMATION_SPEED = 150;
 
-public class Player {
-    public int hp;
-    public int maxHp;
-    public String name;
-    
-    Image currentSprite;
-
-    Animation upAnim;
-    Animation downAnim;
-    Animation rightAnim;
-    Animation leftAnim;
     Sound fuck;
-    public float x = 542;
-    public float y = 424;
-    final float scale = 0.3f;
-
-    private int animSpeed = 150;
 
     public Player(float x, float y) {
-        this.x = x;
-        this.y = y;
-        
-        hp = 200;
-        maxHp = 200;
-        name = "Mummu";
+        super("Mummu", 200, 200, x, y, 0.3f, 64, 64);
     }
 
     public void init() throws SlickException {
-        upAnim = new Animation(new Image[]{
+        super.init(new Image("assets/paussi.jpg"));
+        Animation up = new Animation(new Image[]{
                 new Image("assets/graphics/mummo_back_walk.png"),
                 new Image("assets/graphics/mummo_back_walk_mirror.png")
-        }, animSpeed);
+        }, ANIMATION_SPEED);
 
-        downAnim = new Animation(new Image[]{
+        Animation down = new Animation(new Image[]{
                 new Image("assets/graphics/mummo_front_walk_mirror.png"),
                 new Image("assets/graphics/mummo_front_walk.png")
-        }, animSpeed);
+        }, ANIMATION_SPEED);
 
-        leftAnim = new Animation(new Image[]{
+        Animation left = new Animation(new Image[]{
                 new Image("assets/graphics/mummo_left_walk.png"),
                 new Image("assets/graphics/mummo_left_stationary.png")
-        }, animSpeed);
+        }, ANIMATION_SPEED);
 
-        rightAnim = new Animation(new Image[]{
+        Animation right = new Animation(new Image[]{
                 new Image("assets/graphics/mummo_right_walk.png"),
                 new Image("assets/graphics/mummo_right_stationary.png")
-        }, animSpeed);
-
-        currentSprite = downAnim.getCurrentFrame();
+        }, ANIMATION_SPEED);
+        setAnimations(left, right, up, down);
+        currentSprite = down.getCurrentFrame();
 
         fuck = new Sound("assets/fuck.ogg");
     }
 
     int prevTileID = -1;
 
-    public void update(Input input, int delta) {
-        rightAnim.update(delta);
-        downAnim.update(delta);
-        upAnim.update(delta);
-        leftAnim.update(delta);
+    public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
+        super.update(container, game, delta);
 
         float xMovement = 0;
         float yMovement = 0;
+        Input input = container.getInput();
 
         if (input.isKeyDown(Input.KEY_A)) {
             xMovement = -scale * delta;
-            currentSprite = leftAnim.getCurrentFrame();
+            currentSprite = leftAnimation.getCurrentFrame();
         }
         else if (input.isKeyDown(Input.KEY_D)) {
             xMovement = scale * delta;
-            currentSprite = rightAnim.getCurrentFrame();
+            currentSprite = rightAnimation.getCurrentFrame();
         }
 
         int tileID = GameBaseState.map.getTileId((int) (x + xMovement) / 64, (int) y / 64, 1);
@@ -91,21 +66,21 @@ public class Player {
 
         if (input.isKeyDown(Input.KEY_W)) {
             yMovement = -scale * delta;
-            currentSprite = upAnim.getCurrentFrame();
+            currentSprite = upAnimation.getCurrentFrame();
         }
         else if (input.isKeyDown(Input.KEY_S)) {
             yMovement = scale * delta;
-            currentSprite = downAnim.getCurrentFrame();
+            currentSprite = downAnimation.getCurrentFrame();
         }
 
         tileID = GameBaseState.map.getTileId((int) x / 64, (int) (y + yMovement) / 64, 1);
         if (!TileInfo.tilePropertyExists(tileID, "blocked")) {
             y += yMovement;
         }
-
     }
 
-    public void render() throws SlickException {
+    @Override
+    public void render(GameContainer container, StateBasedGame game, Graphics graphics) throws SlickException {
         currentSprite.draw(512, 384);
 
         int tileID = GameBaseState.map.getTileId((int) x / 64, (int) y / 64, 1);
@@ -122,10 +97,5 @@ public class Player {
             zyklon.Inventory.pickup(tileID);
             map.setTileId((int) x / 64, (int) y / 64, 1, 0);
         }
-    }
-
-    @Override
-    public String toString() {
-        return x + " " + y;
     }
 }
