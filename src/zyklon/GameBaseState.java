@@ -101,6 +101,12 @@ public class GameBaseState extends BasicGameState {
         }
 
         if (elapsedTime > 500) {
+            player.stamina += 1;
+            
+            if(player.stamina > player.maxStamina) {
+                player.stamina = player.maxStamina;
+            }
+            
             if (fading < 1) {
                 fading += 0.01f;
             }
