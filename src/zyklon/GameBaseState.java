@@ -98,7 +98,7 @@ public class GameBaseState extends BasicGameState {
 
         if (elapsedTime > 500) {
             if (fading < 1) {
-                fading += 0.02f;
+                fading += 0.01f;
             }
             elapsedTime = 0;
             
