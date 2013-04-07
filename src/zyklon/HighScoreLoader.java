@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 
 public class HighScoreLoader {
 
@@ -44,6 +45,8 @@ public class HighScoreLoader {
             return null;
         }
 
+        Arrays.sort(scores);
+        
         return scores;
     }
 }
