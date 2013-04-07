@@ -13,6 +13,7 @@ public class Player extends GraphicEntity {
     
 
     Sound fuck;
+    Sound yay;
 
     public Player(float x, float y) {
         super("Mummu", 200, 200, x, y, 0.3f, 64, 64);
@@ -45,6 +46,7 @@ public class Player extends GraphicEntity {
         currentSprite = down.getCurrentFrame();
 
         fuck = new Sound("assets/nom.ogg");
+        yay = new Sound("assets/yay.ogg");
     }
 
     int prevTileID = -1;
@@ -104,6 +106,7 @@ public class Player extends GraphicEntity {
         if (TileInfo.tilePropertyExists(tileID, "pickup")) {
             int eventID = (Integer) TileInfo.getTileProperty(tileID, "pickup");
             zyklon.Inventory.pickup(tileID);
+            yay.play();
             map.setTileId((int) x / 64, (int) y / 64, 1, 0);
         }
         if (TileInfo.tilePropertyExists(tileID, "endgame")) {
