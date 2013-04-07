@@ -23,6 +23,8 @@ public class GameBaseState extends BasicGameState {
     Inventory inventory = new Inventory();
     Animation insaneAnimation;
     Sound gachunk;
+    Sound paussiMoi;
+    Sound bmur;
 
     int stateId = -1;
 
@@ -64,6 +66,8 @@ public class GameBaseState extends BasicGameState {
         }, 200);
         shadowMask = new Image("assets/graphics/lightMask5.png");
         gachunk = new Sound("assets/gachunk.ogg");
+        paussiMoi = new Sound("assets/paussi_moi.ogg");
+        bmur = new Sound("assets/bmur.ogg");
     }
 
     @Override
@@ -122,6 +126,13 @@ public class GameBaseState extends BasicGameState {
                     if (ge instanceof SharkEnemy) {
                         gachunk.play(1, 2);
                     }
+                    if (ge instanceof PaussiEnemy) {
+                        paussiMoi.play();
+                    }
+                    if (ge instanceof BearEnemy) {
+                        bmur.play();
+                    }
+
                     int rand = (int) (Math.random() * 4);
                     Transition t;
                     if (rand == 0) t = new VerticalSplitTransition();

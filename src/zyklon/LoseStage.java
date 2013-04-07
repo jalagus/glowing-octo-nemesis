@@ -4,12 +4,7 @@
  */
 package zyklon;
 
-import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Image;
-import org.newdawn.slick.Input;
-import org.newdawn.slick.SlickException;
-import org.newdawn.slick.UnicodeFont;
+import org.newdawn.slick.*;
 import org.newdawn.slick.font.effects.ColorEffect;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
@@ -24,6 +19,7 @@ int stateId = -1;
     
     Image background;
     UnicodeFont scoreFont;
+    Sound end;
     
     public LoseStage(int stateId) {
         this.stateId = stateId;
@@ -39,7 +35,8 @@ int stateId = -1;
         background = new Image("assets/haviokuva.png");
         
         scoreFont = new UnicodeFont("assets/menu.ttf", 60, false, false);
-        scoreFont.getEffects().add(new ColorEffect(java.awt.Color.white));        
+        scoreFont.getEffects().add(new ColorEffect(java.awt.Color.white));
+        end = new Sound("assets/end.ogg");
     }
 
     @Override
@@ -51,6 +48,7 @@ int stateId = -1;
 
     @Override
     public void update(GameContainer gc, StateBasedGame sbg, int i) throws SlickException {
+        if (!end.playing()) end.loop();
         scoreFont.loadGlyphs();
         
         Input input = gc.getInput();
