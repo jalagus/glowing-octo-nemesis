@@ -143,12 +143,14 @@ public class PokemonFightState extends BasicGameState {
                 if (enemy.hp < 1) {
                     enemy.hp = 0;
                     fightMusic.stop();
+                    Main.points -= 1000;
                     sbg.enterState(Main.GAMESTATE, new EmptyTransition(), new FadeInTransition());
                 }
 
                 if (player.hp < 1) {
                     player.hp = 0;
                     fightMusic.stop();
+                    Main.points -= 1000;
                     sbg.enterState(Main.LOSESTAGE, new EmptyTransition(), new FadeInTransition());
                 }
             }

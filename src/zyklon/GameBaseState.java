@@ -29,7 +29,7 @@ public class GameBaseState extends BasicGameState {
     private float fading = 0;
 
     public GameBaseState(int stateId) {
-        Main.points = 100000;
+        Main.points = 10000;
         
         this.stateId = stateId;
         entities = new ArrayList<GraphicEntity>();
