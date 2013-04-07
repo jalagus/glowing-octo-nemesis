@@ -130,7 +130,7 @@ public class GameBaseState extends BasicGameState {
                         paussiMoi.play();
                     }
                     if (ge instanceof BearEnemy) {
-
+                        bmur.play();
                     }
 
                     int rand = (int) (Math.random() * 4);
