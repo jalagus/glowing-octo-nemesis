@@ -40,7 +40,7 @@ public class HighScoreState extends BasicGameState {
     @Override
     public void render(GameContainer gc, StateBasedGame sbg, Graphics grphcs) throws SlickException {
         background.draw(0, 0);
-        table.draw(300, 80);
+        table.draw(0, 0);
 
         hsFont.drawString(20, 20, "High Scores");
 
