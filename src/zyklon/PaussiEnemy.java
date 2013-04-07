@@ -10,7 +10,7 @@ public class PaussiEnemy extends GraphicEntity {
     private static final int ANIMATION_SPEED = 150;
 
     public PaussiEnemy(float x, float y) {
-        super("Paussi", 100, 100, x, y, 0.1f, 64, 128);
+        super("Paussi", 90, 90, x, y, 0.1f, 64, 128);
     }
 
     public void init() throws SlickException {
@@ -30,6 +30,10 @@ public class PaussiEnemy extends GraphicEntity {
     }
 
     public void runAi(float px, float py, int delta) {
+        if (Math.abs(px - x) + Math.abs(py - y) > 2000) {
+            x = (float) Math.random() * 4000;
+            y = (float) Math.random() * 4000;
+        }
         if (py > y) {
             y += scale * delta;
             if (downAnimation != null) currentSprite = downAnimation.getCurrentFrame();

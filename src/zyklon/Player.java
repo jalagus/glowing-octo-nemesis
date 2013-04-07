@@ -9,7 +9,7 @@ public class Player extends GraphicEntity {
     private static final int ANIMATION_SPEED = 150;
     
     public int stamina;
-    public int maxStamina;
+    public int maxStamina = 200;
     
 
     Sound fuck;
@@ -44,7 +44,7 @@ public class Player extends GraphicEntity {
         setAnimations(left, right, up, down);
         currentSprite = down.getCurrentFrame();
 
-        fuck = new Sound("assets/fuck.ogg");
+        fuck = new Sound("assets/nom.ogg");
     }
 
     int prevTileID = -1;
@@ -98,6 +98,8 @@ public class Player extends GraphicEntity {
             int eventID = (Integer) TileInfo.getTileProperty(tileID, "event");
             if (!fuck.playing()) fuck.play();
             GameBaseState.insane += 1;
+            hp += 5;
+            map.setTileId((int) x / 64, (int) y / 64, 1, 0);
         }
         if (TileInfo.tilePropertyExists(tileID, "pickup")) {
             int eventID = (Integer) TileInfo.getTileProperty(tileID, "pickup");
