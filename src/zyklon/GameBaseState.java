@@ -88,6 +88,10 @@ public class GameBaseState extends BasicGameState {
         }        
         
         for (GraphicEntity ge : entities) {
+            if (ge instanceof Player) {
+                ge.update(container, game, delta);
+                continue;
+            }
             if (ge.active) {
                 ge.update(container, game, delta);
 
