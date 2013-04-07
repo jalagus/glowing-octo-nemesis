@@ -25,7 +25,7 @@ public class PokemonFightState extends BasicGameState {
     Player player;
     Sound fightMusic;
     GraphicEntity enemy;
-
+    Sound mummoHit;
     int stateId = -1;
 
     private int menuOption = 0;
@@ -50,6 +50,7 @@ public class PokemonFightState extends BasicGameState {
         hud = new Image("assets/graphics/taistelureunat.png");
 
         fightMusic = new Sound("assets/audio/fightMusic.ogg");
+        mummoHit = new Sound("assets/mummo_hit.ogg");
 
         menuFont = new UnicodeFont("assets/menu.ttf", 30, false, false);
         statsFont = new UnicodeFont("assets/menu.ttf", 30, false, false);
@@ -110,7 +111,7 @@ public class PokemonFightState extends BasicGameState {
     @Override
     public void update(GameContainer gc, StateBasedGame sbg, int i) throws SlickException {
         if (!fightMusic.playing()) {
-            fightMusic.loop(1.0f, 0.2f);
+            fightMusic.loop(1.0f, 0.1f);
         }
 
         menuFont.loadGlyphs();
@@ -133,6 +134,7 @@ public class PokemonFightState extends BasicGameState {
             }
         }
         else if (input.isKeyPressed(Input.KEY_ENTER)) {
+            mummoHit.play();
             if ((player.stamina - (20 * menuOption)) >= 0) {
 
                 enemy.hp = enemy.hp - ((10 * menuOption) + 10);
