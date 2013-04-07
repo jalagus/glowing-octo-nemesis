@@ -11,7 +11,7 @@ public class BearEnemy extends GraphicEntity {
     private static final int ANIMATION_SPEED = 150;
 
     public BearEnemy(float x, float y) {
-        super("Karrrrhu", 100, 100, x, y, 0.12f, 128, 64);
+        super("Urho", 100, 100, x, y, 0.12f, 128, 64);
     }
 
     public void init() throws SlickException {

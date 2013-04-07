@@ -29,6 +29,8 @@ public class GameBaseState extends BasicGameState {
     private float fading = 0;
 
     public GameBaseState(int stateId) {
+        Main.points = 100000;
+        
         this.stateId = stateId;
         entities = new ArrayList<GraphicEntity>();
         entities.add(player);
@@ -85,6 +87,10 @@ public class GameBaseState extends BasicGameState {
                 fading += 0.02f;
             }
             elapsedTime = 0;
+            
+            if (Main.points > 0) {
+                Main.points--;
+            }
         }
 
         for (GraphicEntity ge : entities) {

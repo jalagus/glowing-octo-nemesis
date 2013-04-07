@@ -105,8 +105,10 @@ public class Player extends GraphicEntity {
         }
         if (TileInfo.tilePropertyExists(tileID, "endgame")) {
             int eventID = (Integer) TileInfo.getTileProperty(tileID, "endgame");
-            if(Inventory.finish())
+            if(Inventory.finish()) {
+                Main.points += 10000;
                 game.enterState(Main.WINSTAGE);
+            }
         }
     }
 }
