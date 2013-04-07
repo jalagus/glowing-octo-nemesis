@@ -10,7 +10,7 @@ public class SharkEnemy extends GraphicEntity {
     private static final int ANIMATION_SPEED = 150;
 
     public SharkEnemy(float x, float y) {
-        super("Gashunk", 100, 100, x, y, 0.15f, 128, 64);
+        super("Gashunk", 120, 120, x, y, 0.15f, 128, 64);
     }
 
     public void init() throws SlickException {

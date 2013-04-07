@@ -98,6 +98,8 @@ public class Player extends GraphicEntity {
             int eventID = (Integer) TileInfo.getTileProperty(tileID, "event");
             if (!fuck.playing()) fuck.play();
             GameBaseState.insane += 1;
+            hp += 5;
+            map.setTileId((int) x / 64, (int) y / 64, 1, 0);
         }
         if (TileInfo.tilePropertyExists(tileID, "pickup")) {
             int eventID = (Integer) TileInfo.getTileProperty(tileID, "pickup");

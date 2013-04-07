@@ -85,7 +85,7 @@ public class GameBaseState extends BasicGameState {
 
         inventory.render();
         if (insane != 0) {
-            insaneAnimation.draw(0, 0, new Color(0, 0, 0, insane * 0.004f));
+            insaneAnimation.draw(0, 0, new Color(0, 0, 0, insane * 0.5f));
         }
     }
 
@@ -93,7 +93,7 @@ public class GameBaseState extends BasicGameState {
     public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
         elapsedTime += delta;
         insaneAnimation.update(delta);
-        insane -= delta * 0.01f;
+        insane -= delta * 0.00003f;
         if (insane < 0) insane = 0;
 
         if (!gameMusic.playing()) {

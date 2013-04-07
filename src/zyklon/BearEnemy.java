@@ -11,7 +11,7 @@ public class BearEnemy extends GraphicEntity {
     private static final int ANIMATION_SPEED = 150;
 
     public BearEnemy(float x, float y) {
-        super("Urho", 100, 100, x, y, 0.12f, 128, 64);
+        super("Urho", 80, 80, x, y, 0.12f, 128, 64);
     }
 
     public void init() throws SlickException {
@@ -34,21 +34,27 @@ public class BearEnemy extends GraphicEntity {
         runAi(GameBaseState.player.x, GameBaseState.player.y, delta);
     }
 
+    float sprint = 1;
+
     public void runAi(float px, float py, int delta) {
+        if (Math.abs(px - x) + Math.abs(py - y) < 300 && Math.abs(px - x) + Math.abs(py - y) > 100) {
+            sprint = 2f;
+        } else sprint = 1;
+
         if (py > y) {
-            y += scale * delta;
+            y += scale * delta * sprint;
             if (downAnimation != null) currentSprite = downAnimation.getCurrentFrame();
         }
         if (px > x) {
-            x += scale * delta;
+            x += scale * delta * sprint;
             if (rightAnimation != null) currentSprite = rightAnimation.getCurrentFrame();
         }
         if (py < y) {
-            y -= scale * delta;
+            y -= scale * delta * sprint;
             if (upAnimation != null) currentSprite = upAnimation.getCurrentFrame();
         }
         if (px < x) {
-            x -= scale * delta;
+            x -= scale * delta * sprint;
             if (leftAnimation != null) currentSprite = leftAnimation.getCurrentFrame();
         }
     }
