@@ -5,6 +5,7 @@
 
 package zyklon;
 
+import maingame.Main;
 import maingame.Player;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
@@ -21,7 +22,7 @@ import org.newdawn.slick.state.StateBasedGame;
 public class PokemonFightState extends BasicGameState {
 
     Image background;
-    Image table;
+    Image hud;
     
     UnicodeFont menuFont;
     UnicodeFont statsFont;
@@ -35,11 +36,6 @@ public class PokemonFightState extends BasicGameState {
     
     public PokemonFightState(int stateId) {
         this.stateId = stateId;
-        
-        this.enemy = new Enemy();
-        this.enemy.hp = 100;
-        this.enemy.maxHp = 100;
-        this.enemy.name = "Karhu";
     }
     
     public void setEnemyAndPlayer(Player player, Enemy enemy) {
@@ -55,6 +51,7 @@ public class PokemonFightState extends BasicGameState {
     @Override
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
         background = new Image("assets/graphics/taustakuva_mustaharmaa.png");
+        hud = new Image("assets/graphics/taistelureunat.png");
         
         menuFont = new UnicodeFont("assets/menu.ttf", 30, false, false);  
         statsFont = new UnicodeFont("assets/menu.ttf", 30, false, false);  
@@ -66,10 +63,11 @@ public class PokemonFightState extends BasicGameState {
     @Override
     public void render(GameContainer gc, StateBasedGame sbg, Graphics grphcs) throws SlickException {
         background.draw(0,0);
+        hud.draw(0, 0);
         
-        statsFont.drawString(700, 460, "Mummo");
+        statsFont.drawString(700, 460, player.name);
         statsFont.drawString(700, 490, "HP");
-        statsFont.drawString(700, 520, "100 / 100");
+        statsFont.drawString(700, 520, player.hp + " / " + player.maxHp);
         
         statsFont.drawString(50, 50, enemy.name);
         statsFont.drawString(50, 80, "HP");
@@ -77,16 +75,16 @@ public class PokemonFightState extends BasicGameState {
         
         // Enemy
         grphcs.setColor(Color.yellow);
-        grphcs.fillRect(100, 85, 200, 20);
+        grphcs.fillRect(100, 85, 150, 20);
         
         // Mummo
         grphcs.setColor(Color.yellow);
-        grphcs.fillRect(750, 495, 200, 20);
+        grphcs.fillRect(750, 495, 150, 20);
         
         
         grphcs.setColor(Color.black);
-        grphcs.drawRect(100, 85, 200, 20);
-        grphcs.drawRect(750, 495, 200, 20);
+        grphcs.drawRect(100, 85, 150, 20);
+        grphcs.drawRect(750, 495, 150, 20);
         
         switch (menuOption) {
             case 0:
@@ -130,7 +128,15 @@ public class PokemonFightState extends BasicGameState {
             if(menuOption > 3) {
                 menuOption = 0;
             }
-        }      
+        }
+        else if (input.isKeyPressed(Input.KEY_ENTER)) {
+            enemy.hp = enemy.hp - (10 * menuOption);
+            player.hp = player.hp - 10;
+            
+            if (enemy.hp < 1) {
+                sbg.enterState(Main.GAMESTATE);
+            }
+        }
 
         
     }
