@@ -15,7 +15,7 @@ public class TileInfo {
         setTileProperty(23, "blocked", true);
         setTileProperty(22, "blocked", true);
         setTileProperty(14, "blocked", true);
-        setTileProperty(41, "event", 1);
+        setTileProperty(24, "event", 1);
         setTileProperty(28, "pickup", 1);
         setTileProperty(31, "pickup", 1);
         setTileProperty(32, "pickup", 1);
