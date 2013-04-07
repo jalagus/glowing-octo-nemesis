@@ -11,6 +11,7 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.Sound;
 import org.newdawn.slick.UnicodeFont;
 import org.newdawn.slick.font.effects.ColorEffect;
 import org.newdawn.slick.state.BasicGameState;
@@ -24,6 +25,9 @@ public class WinStage extends BasicGameState {
     
     UnicodeFont scoreFont;
     
+    private boolean winplayed = false;
+    
+    Sound win;
     
     public WinStage(int stateId) {
         this.stateId = stateId;
@@ -39,7 +43,9 @@ public class WinStage extends BasicGameState {
         background = new Image("assets/voittokuva.png");
         
         scoreFont = new UnicodeFont("assets/menu.ttf", 60, false, false);
-        scoreFont.getEffects().add(new ColorEffect(java.awt.Color.white));         
+        scoreFont.getEffects().add(new ColorEffect(java.awt.Color.white)); 
+        
+        win = new Sound("assets/audio/victoryFanfare.ogg");
     }
 
     @Override
@@ -48,6 +54,10 @@ public class WinStage extends BasicGameState {
         
         scoreFont.drawString(200, 240, "You got " + Main.points + " points!");
 
+        if (!winplayed) {
+            winplayed = true;
+            win.play();
+        }
     }
 
     @Override

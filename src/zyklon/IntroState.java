@@ -17,7 +17,7 @@ public class IntroState extends BasicGameState {
 
     int stateId = -1;
 
-    private int position = 768;
+    private int position = 738;
     
     private int elapsedTime = 0;
     
@@ -32,12 +32,12 @@ public class IntroState extends BasicGameState {
 
     @Override
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-        background = new Image("assets/graphics/taustakuva_highscore.png");
+        background = new Image("assets/intro_teksti_kuva.png");
     }
 
     @Override
     public void render(GameContainer gc, StateBasedGame sbg, Graphics grphcs) throws SlickException {
-        background.draw(0, position);
+        background.draw(200, position);
     }
 
     @Override
