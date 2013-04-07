@@ -24,6 +24,7 @@ public class TileInfo {
         setTileProperty(35, "pickup", 1);
         setTileProperty(39, "pickup", 1);
         setTileProperty(40, "pickup", 1);
+        setTileProperty(8, "endgame", 1);
     }
 
     public static Object getTileProperty(int tileID, String propertyName) {

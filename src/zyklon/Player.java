@@ -97,5 +97,10 @@ public class Player extends GraphicEntity {
             zyklon.Inventory.pickup(tileID);
             map.setTileId((int) x / 64, (int) y / 64, 1, 0);
         }
+        if (TileInfo.tilePropertyExists(tileID, "endgame")) {
+            int eventID = (Integer) TileInfo.getTileProperty(tileID, "endgame");
+            if(Inventory.finish())
+                game.enterState(Main.WINSTAGE);
+        }
     }
 }
