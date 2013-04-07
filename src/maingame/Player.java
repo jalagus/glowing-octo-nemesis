@@ -25,8 +25,9 @@ public class Player {
 
     private int animSpeed = 150;
 
-    public Player() {
-
+    public Player(float x, float y) {
+        this.x = x;
+        this.y = y;
     }
 
     public void init() throws SlickException {

@@ -56,7 +56,7 @@ public class BearEnemy {
     }
 
     public void render() {
-        currentSprite.draw(x - GameBaseState.mapXPosition, y - GameBaseState.mapYPosition);
+        currentSprite.draw(x - GameBaseState.mapXPosition - 64, y - GameBaseState.mapYPosition - 32);
     }
 
     @Override
