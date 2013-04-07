@@ -12,6 +12,10 @@ import java.util.HashMap;
 import static maingame.MoveTile.map;
 
 public class Player {
+    public int hp;
+    public int maxHp;
+    public String name;
+    
     Image currentSprite;
 
     Animation upAnim;
@@ -28,6 +32,10 @@ public class Player {
     public Player(float x, float y) {
         this.x = x;
         this.y = y;
+        
+        hp = 200;
+        maxHp = 200;
+        name = "Mummu";
     }
 
     public void init() throws SlickException {
