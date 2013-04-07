@@ -53,6 +53,9 @@ public class GameBaseState extends BasicGameState {
         mapWidth = map.getWidth() * 64;
         paussiEnemy.init();
         sharkEnemy.init();
+        bearEnemy.init();
+        MoveTile.move();
+
         
         lightMask = new Animation(new Image[] {
             new Image("assets/graphics/lightMask1.png"),
