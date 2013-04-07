@@ -1,8 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package zyklon;
 
 import org.newdawn.slick.*;
@@ -27,6 +22,8 @@ public abstract class GraphicEntity {
     Animation rightAnimation;
     Animation upAnimation;
     Animation downAnimation;
+    
+    public boolean active = true;
 
 
     public GraphicEntity(String name, int hp, int maxHp, float x, float y, float scale, int width, int height) {

@@ -61,7 +61,9 @@ public class GameBaseState extends BasicGameState {
     public void render(GameContainer container, StateBasedGame game, Graphics graphics) throws SlickException {
         map.render(-mapXPosition, -mapYPosition);
         for (GraphicEntity ge : entities) {
-            ge.render(container, game, graphics);
+            if (ge.active) {    
+                ge.render(container, game, graphics);
+            }
         }
         
         Color fade = new Color(0, 0, 0, fading);
@@ -86,7 +88,19 @@ public class GameBaseState extends BasicGameState {
         }        
         
         for (GraphicEntity ge : entities) {
-            ge.update(container, game, delta);
+            if (ge.active) {
+                ge.update(container, game, delta);
+
+                if (checkCollision(ge, player)) {
+                    PokemonFightState pks = (PokemonFightState) game.getState(Main.FIGHTSTATE);
+
+                    pks.setEnemyAndPlayer(player, ge);
+
+                    game.enterState(Main.FIGHTSTATE);
+
+                    ge.active = false;
+                }
+            }
         }
 
         mapXPosition = (int) player.x - 542;
@@ -95,6 +109,10 @@ public class GameBaseState extends BasicGameState {
         if (container.getInput().isKeyPressed(Input.KEY_ESCAPE)) {
             game.enterState(Main.MAINMENUSTATE);
         }
+    }
+    
+    private boolean checkCollision(GraphicEntity enemy, Player player) {
+        return false;
     }
 
 }
