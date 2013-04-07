@@ -97,7 +97,7 @@ public class GameBaseState extends BasicGameState {
         if (insane < 0) insane = 0;
 
         if (!gameMusic.playing()) {
-            gameMusic.loop(1.0f, 0.2f);
+            gameMusic.loop(1.0f, 0.05f);
         }
 
         if (elapsedTime > 500) {
