@@ -131,7 +131,7 @@ public class PokemonFightState extends BasicGameState {
             }
         }
         else if (input.isKeyPressed(Input.KEY_ENTER)) {
-            enemy.hp = enemy.hp - (10 * menuOption);
+            enemy.hp = enemy.hp - (20 * menuOption);
             player.hp = player.hp - 10;
 
             if (enemy.hp < 1) {

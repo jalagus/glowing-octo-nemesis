@@ -14,7 +14,7 @@ public class PaussiEnemy extends GraphicEntity {
     }
 
     public void init() throws SlickException {
-        super.init(new Image("assets/graphics/mustikka.png"));
+        super.init(new Image("assets/graphics/taistelureuna_paussi.png"));
         Animation a = new Animation(new Image[]{
                 new Image("assets/paussi_uus.png"),
                 new Image("assets/paussi_uus_mirror.png")

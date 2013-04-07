@@ -92,6 +92,7 @@ public class GameBaseState extends BasicGameState {
                 ge.update(container, game, delta);
 
                 if (checkCollision(ge, player)) {
+                    gameMusic.stop();
                     PokemonFightState pks = (PokemonFightState) game.getState(Main.FIGHTSTATE);
 
                     pks.setEnemyAndPlayer(player, ge);
