@@ -1,6 +1,7 @@
 package zyklon;
 
 import maingame.GameBaseState;
+import org.newdawn.slick.Animation;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
@@ -10,6 +11,8 @@ public class PaussiEnemy {
     float y;
     final float scale = 0.1f;
     Image sprite;
+    Animation anim;
+    private static final int animSpeed = 150;
     
     public PaussiEnemy(float x, float y) {
         this.x = x;
@@ -18,9 +21,14 @@ public class PaussiEnemy {
 
     public void init() throws SlickException {
         sprite = new Image("assets/paussi.jpg");
+        anim = new Animation(new Image[] {
+                new Image("assets/paussi_uus.png"),
+                new Image("assets/paussi_uus_mirror.png")
+        }, animSpeed);
     }
 
     public void update(int delta) {
+        anim.update(delta);
         runAi(GameBaseState.player.x, GameBaseState.player.y, delta);
     }
 
@@ -43,7 +51,8 @@ public class PaussiEnemy {
     }
 
     public void render() {
-        sprite.draw(x - GameBaseState.mapXPosition - 200, y - GameBaseState.mapYPosition - 115);
+        sprite = anim.getCurrentFrame();
+        sprite.draw(x - GameBaseState.mapXPosition - 32, y - GameBaseState.mapYPosition - 64);
     }
 
     @Override

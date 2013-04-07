@@ -10,6 +10,7 @@ import org.newdawn.slick.Sound;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.tiled.TiledMap;
+import zyklon.BearEnemy;
 import zyklon.PaussiEnemy;
 import zyklon.Inventory;
 import zyklon.SharkEnemy;
@@ -19,9 +20,10 @@ public class GameBaseState extends BasicGameState {
     Sound gameMusic;
     
     public static TiledMap map;
-    public static Player player = new Player();
-    PaussiEnemy paussiEnemy = new PaussiEnemy(1000, 1000);
+    public static Player player = new Player(2590, 2590);
+    PaussiEnemy paussiEnemy = new PaussiEnemy(4000, 4000);
     SharkEnemy sharkEnemy = new SharkEnemy(0, 0);
+    BearEnemy bearEnemy = new BearEnemy(3000, 1000);
     public static int mapWidth;
     public static int mapHeight;
     public static int mapXPosition = 0;
