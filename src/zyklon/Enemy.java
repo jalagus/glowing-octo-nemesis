@@ -13,5 +13,5 @@ public class Enemy {
     public int maxHp;
     public String name;
     
-    public Image fightGraphic;
+    public String fightGraphic;
 }

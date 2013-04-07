@@ -18,12 +18,15 @@ public class SharkEnemy extends Enemy {
     public SharkEnemy(float x, float y) {
         this.x = x;
         this.y = y;
+        
+        super.name = "Haikala";
+        super.hp = 100;
+        super.maxHp = 100;
+        super.fightGraphic = "assets/graphics/taistelureunat_hai.png";
     }
 
     public void init() throws SlickException {
-        super.hp = 100;
-        super.maxHp = 100;
-        super.fightGraphic = new Image("assets/graphics/taistelureunat_hai.png");
+
         
         
         leftAnim = new Animation(new Image[]{

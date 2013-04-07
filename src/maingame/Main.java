@@ -4,6 +4,7 @@ import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
+import zyklon.BearEnemy;
 import zyklon.Enemy;
 import zyklon.HighScoreState;
 import zyklon.MainMenuState;
@@ -30,11 +31,7 @@ public class Main extends StateBasedGame {
 
         PokemonFightState temp = (PokemonFightState) this.getState(FIGHTSTATE);
         
-        Enemy en = new Enemy();
-        
-        en.hp = 100;
-        en.maxHp = 100;
-        en.name = "Karhu";
+        Enemy en = new BearEnemy(0,0);
         
         temp.setEnemyAndPlayer(new Player(0,0), en);
         

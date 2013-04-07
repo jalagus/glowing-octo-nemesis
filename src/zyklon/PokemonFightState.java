@@ -24,6 +24,8 @@ public class PokemonFightState extends BasicGameState {
     Image background;
     Image hud;
     
+    Image enemyFight;
+    
     UnicodeFont menuFont;
     UnicodeFont statsFont;
     
@@ -41,6 +43,8 @@ public class PokemonFightState extends BasicGameState {
     public void setEnemyAndPlayer(Player player, Enemy enemy) {
         this.player = player;
         this.enemy = enemy;
+        
+        
     }
     
     @Override
@@ -52,6 +56,7 @@ public class PokemonFightState extends BasicGameState {
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
         background = new Image("assets/graphics/taustakuva_mustaharmaa.png");
         hud = new Image("assets/graphics/taistelureunat.png");
+        enemyFight = new Image(enemy.fightGraphic);
         
         menuFont = new UnicodeFont("assets/menu.ttf", 30, false, false);  
         statsFont = new UnicodeFont("assets/menu.ttf", 30, false, false);  
@@ -64,6 +69,7 @@ public class PokemonFightState extends BasicGameState {
     public void render(GameContainer gc, StateBasedGame sbg, Graphics grphcs) throws SlickException {
         background.draw(0,0);
         hud.draw(0, 0);
+        enemyFight.draw(0,0);
         
         statsFont.drawString(700, 460, player.name);
         statsFont.drawString(700, 490, "HP");

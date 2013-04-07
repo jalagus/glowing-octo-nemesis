@@ -16,14 +16,17 @@ public class BearEnemy extends Enemy {
     private static final int animSpeed = 150;
 
     public BearEnemy(float x, float y) {
+        super.hp = 100;
+        super.maxHp = 100;
+        super.name = "Karrrrhu";
+        super.fightGraphic = "assets/graphics/taistelureunat_bmur.png";
+        
         this.x = x;
         this.y = y;
     }
 
     public void init() throws SlickException {
-        super.hp = 100;
-        super.maxHp = 100;        
-        super.fightGraphic = new Image("assets/graphics/taistelureunat_bmur.png");
+
         
         
         leftAnim = new Animation(new Image[]{

@@ -17,12 +17,15 @@ public class PaussiEnemy extends Enemy {
     public PaussiEnemy(float x, float y) {
         this.x = x;
         this.y = y;
+        
+        super.name = "Paussi";
+        super.hp = 100;
+        super.maxHp = 100;        
+        super.fightGraphic = "assets/graphics/mustikka.png";        
     }
 
     public void init() throws SlickException {
-        super.hp = 100;
-        super.maxHp = 100;        
-        super.fightGraphic = new Image("assets/graphics/mustikka.png");
+
         
         
         sprite = new Image("assets/paussi.jpg");
