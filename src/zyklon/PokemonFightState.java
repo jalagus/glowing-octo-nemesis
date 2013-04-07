@@ -36,11 +36,6 @@ public class PokemonFightState extends BasicGameState {
     
     public PokemonFightState(int stateId) {
         this.stateId = stateId;
-        
-        this.enemy = new Enemy();
-        this.enemy.hp = 100;
-        this.enemy.maxHp = 100;
-        this.enemy.name = "Karhu";
     }
     
     public void setEnemyAndPlayer(Player player, Enemy enemy) {
