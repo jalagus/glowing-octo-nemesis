@@ -75,11 +75,11 @@ public class PokemonFightState extends BasicGameState {
         
         // Enemy
         grphcs.setColor(Color.yellow);
-        grphcs.fillRect(100, 85, 150, 20);
+        grphcs.fillRect(100, 85, (int) (150 * ((1.0 * enemy.hp) / enemy.maxHp)), 20);
         
         // Mummo
         grphcs.setColor(Color.yellow);
-        grphcs.fillRect(750, 495, 150, 20);
+        grphcs.fillRect(750, 495, (int) (150 * ((1.0 * player.hp) / player.maxHp)), 20);
         
         
         grphcs.setColor(Color.black);
@@ -136,6 +136,11 @@ public class PokemonFightState extends BasicGameState {
             if (enemy.hp < 1) {
                 sbg.enterState(Main.GAMESTATE);
             }
+            
+            if (player.hp < 1) {
+                sbg.enterState(Main.GAMESTATE);
+            }
+            
         }
 
         
