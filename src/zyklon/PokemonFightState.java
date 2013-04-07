@@ -149,11 +149,7 @@ public class PokemonFightState extends BasicGameState {
                 if (player.hp < 1) {
                     player.hp = 0;
                     fightMusic.stop();
-<<<<<<< Updated upstream
-                    sbg.enterState(Main.GAMESTATE, new EmptyTransition(), new FadeInTransition());
-=======
-                    sbg.enterState(Main.LOSESTAGE);
->>>>>>> Stashed changes
+                    sbg.enterState(Main.LOSESTAGE, new EmptyTransition(), new FadeInTransition());
                 }
             }
 
