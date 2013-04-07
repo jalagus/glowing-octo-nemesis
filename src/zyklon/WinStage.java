@@ -58,7 +58,7 @@ public class WinStage extends BasicGameState {
         
         if (input.isKeyPressed(Input.KEY_ESCAPE)) {
             try {
-                FileWriter fstream = new FileWriter("highscore.txt");
+                FileWriter fstream = new FileWriter("highscores.txt");
                 BufferedWriter out = new BufferedWriter(fstream);
                 out.write("temp;" + Main.points);
 
