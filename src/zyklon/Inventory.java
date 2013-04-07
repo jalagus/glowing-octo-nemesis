@@ -57,6 +57,13 @@ public class Inventory {
         if (i == 31)
             jauhob = true;
     }
+    
+    public static boolean finish() {
+        if(sokerib && voib && puolukkab && mustikkab && munatb && maitob && lakkab && jauhob)
+            return true;
+        else
+            return false;
+    }
 
     public void render() {
         inv.draw(754, 0);
