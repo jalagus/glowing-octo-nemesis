@@ -144,7 +144,7 @@ public class MainMenuState extends BasicGameState {
                     sbg.enterState(Main.HIGHSCORESTATE);
                     break;
                 case 2:
-                    gc.exit();
+                    sbg.enterState(Main.CREDITSSTATE);
                     break;
             }
         }

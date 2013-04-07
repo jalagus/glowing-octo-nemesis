@@ -78,7 +78,7 @@ public class WinStage extends BasicGameState {
                 System.err.println("Error: " + e.getMessage());
             }
           
-            sbg.enterState(Main.MAINMENUSTATE);
+            sbg.enterState(Main.CREDITSSTATE);
         }
     }
     

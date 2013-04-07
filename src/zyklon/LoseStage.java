@@ -54,7 +54,7 @@ int stateId = -1;
         Input input = gc.getInput();
         
         if (input.isKeyPressed(Input.KEY_ESCAPE)) {
-            sbg.enterState(Main.MAINMENUSTATE);
+            sbg.enterState(Main.CREDITSSTATE);
         }
     }
     

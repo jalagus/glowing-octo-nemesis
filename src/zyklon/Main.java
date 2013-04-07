@@ -14,6 +14,8 @@ public class Main extends StateBasedGame {
     public static final int WINSTAGE = 4;
     public static final int LOSESTAGE = 5;
     public static final int INTROSTATE = 6;
+    public static final int CREDITSSTATE = 7;
+    
     
     public static int points;
 
@@ -27,6 +29,7 @@ public class Main extends StateBasedGame {
         this.addState(new WinStage(WINSTAGE));
         this.addState(new LoseStage(LOSESTAGE));
         this.addState(new IntroState(INTROSTATE));
+        this.addState(new CreditState(CREDITSSTATE));
 
         this.enterState(MAINMENUSTATE);
     }
