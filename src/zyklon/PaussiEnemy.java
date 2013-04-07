@@ -20,6 +20,11 @@ public class PaussiEnemy extends Enemy {
     }
 
     public void init() throws SlickException {
+        super.hp = 100;
+        super.maxHp = 100;        
+        super.fightGraphic = new Image("assets/graphics/mustikka.png");
+        
+        
         sprite = new Image("assets/paussi.jpg");
         anim = new Animation(new Image[] {
                 new Image("assets/paussi_uus.png"),

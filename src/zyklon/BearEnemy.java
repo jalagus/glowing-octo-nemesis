@@ -21,6 +21,11 @@ public class BearEnemy extends Enemy {
     }
 
     public void init() throws SlickException {
+        super.hp = 100;
+        super.maxHp = 100;        
+        super.fightGraphic = new Image("assets/graphics/mustikka.png");
+        
+        
         leftAnim = new Animation(new Image[]{
                 new Image("assets/graphics/urho_left_stationary.png"),
                 new Image("assets/graphics/urho_left_walk.png")
