@@ -5,6 +5,7 @@
 
 package zyklon;
 
+import java.util.Random;
 import org.newdawn.slick.*;
 import org.newdawn.slick.font.effects.ColorEffect;
 import org.newdawn.slick.state.BasicGameState;
@@ -140,7 +141,7 @@ public class PokemonFightState extends BasicGameState {
                 enemy.hp = enemy.hp - ((10 * menuOption) + 10);
                 player.stamina -= (20 * menuOption);
 
-                player.hp = player.hp - 10;
+                player.hp = player.hp - (new Random().nextInt(10) + 5);
 
                 if (enemy.hp < 1) {
                     enemy.hp = 0;
