@@ -127,6 +127,7 @@ public class GameBaseState extends BasicGameState {
 
                     ge.x = (float) Math.random() * 4000;
                     ge.y = (float) Math.random() * 4000;
+                    ge.hp = ge.maxHp;
                 }
             }
         }
@@ -141,7 +142,7 @@ public class GameBaseState extends BasicGameState {
     }
 
     private boolean checkCollision(GraphicEntity enemy, Player player) {
-        return Math.abs(player.x - enemy.x) < enemy.width && Math.abs(player.y - enemy.y) < enemy.height;
+        return Math.abs(player.x - enemy.x) < enemy.width / 2.0 && Math.abs(player.y - enemy.y) < enemy.height / 2.0;
     }
 
 }
