@@ -141,14 +141,7 @@ public class GameBaseState extends BasicGameState {
     }
 
     private boolean checkCollision(GraphicEntity enemy, Player player) {
-        int colpoint_x = (int) (player.x - enemy.x);
-        int colpoint_y = (int) (player.y - enemy.y);
-
-
-        if (colpoint_x > -10 && colpoint_x < 10 && colpoint_y > -10 && colpoint_y < 10) {
-            return true;
-        }
-        return false;
+        return Math.abs(player.x - enemy.x) < enemy.width && Math.abs(player.y - enemy.y) < enemy.height;
     }
 
 }
