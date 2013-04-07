@@ -1,12 +1,11 @@
 
-package maingame;
+package zyklon;
+
+import org.newdawn.slick.tiled.TiledMap;
 
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Random;
-
-import org.newdawn.slick.*;
-import org.newdawn.slick.tiled.*;
 
 public class MoveTile {
 
@@ -153,14 +152,14 @@ public class MoveTile {
             }
         }
 
-            map.setTileId(9, 9, 1, 0);
-            map.setTileId(11, 9, 1, 0);
-            map.setTileId(13, 9, 1, 0);
-            map.setTileId(15, 9, 1, 0);
-            map.setTileId(17, 9, 1, 0);
-            map.setTileId(19, 9, 1, 0);
-            map.setTileId(21, 9, 1, 0);
-            map.setTileId(23, 9, 1, 0);
-        }
+        map.setTileId(9, 9, 1, 0);
+        map.setTileId(11, 9, 1, 0);
+        map.setTileId(13, 9, 1, 0);
+        map.setTileId(15, 9, 1, 0);
+        map.setTileId(17, 9, 1, 0);
+        map.setTileId(19, 9, 1, 0);
+        map.setTileId(21, 9, 1, 0);
+        map.setTileId(23, 9, 1, 0);
     }
+}
 

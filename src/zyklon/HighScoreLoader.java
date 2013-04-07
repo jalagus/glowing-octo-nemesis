@@ -18,20 +18,20 @@ public class HighScoreLoader {
             String strLine;
 
             int i = 0;
-            
+
             HighScore[] tempScores = new HighScore[10];
-            
-            while ((strLine = br.readLine()) != null && i < 10) {                
+
+            while ((strLine = br.readLine()) != null && i < 10) {
                 String[] temp = strLine.split(";");
-                
+
                 tempScores[i] = new HighScore();
-                
+
                 tempScores[i].name = temp[0];
-                tempScores[i].score = Integer.parseInt(temp[1]); 
-                
+                tempScores[i].score = Integer.parseInt(temp[1]);
+
                 i++;
             }
-            
+
             scores = new HighScore[i];
             for (int a = 0; a < i; a++) {
                 scores[a] = new HighScore();

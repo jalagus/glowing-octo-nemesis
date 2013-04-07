@@ -1,6 +1,5 @@
 package zyklon;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class TileInfo {

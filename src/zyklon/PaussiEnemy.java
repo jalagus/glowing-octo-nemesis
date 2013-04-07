@@ -1,73 +1,51 @@
 package zyklon;
 
-import maingame.GameBaseState;
 import org.newdawn.slick.Animation;
+import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.state.StateBasedGame;
 
-public class PaussiEnemy extends Enemy {
-    
-    float x;
-    float y;
-    final float scale = 0.1f;
-    Image sprite;
-    Animation anim;
-    private static final int animSpeed = 150;
-    
+public class PaussiEnemy extends GraphicEntity {
+    private static final int ANIMATION_SPEED = 150;
+
     public PaussiEnemy(float x, float y) {
-        this.x = x;
-        this.y = y;
-        
-        super.name = "Paussi";
-        super.hp = 100;
-        super.maxHp = 100;        
-        super.fightGraphic = "assets/graphics/mustikka.png";        
+        super("Paussi", 100, 100, x, y, 0.1f, 64, 128);
     }
 
     public void init() throws SlickException {
-
-        
-        
-        sprite = new Image("assets/paussi.jpg");
-        anim = new Animation(new Image[] {
+        super.init(new Image("assets/graphics/mustikka.png"));
+        Animation a = new Animation(new Image[]{
                 new Image("assets/paussi_uus.png"),
                 new Image("assets/paussi_uus_mirror.png")
-        }, animSpeed);
+        }, ANIMATION_SPEED);
+        currentSprite = a.getCurrentFrame();
+        setAnimations(a, null, null, null);
     }
 
-    public void update(int delta) {
-        anim.update(delta);
+    @Override
+    public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
+        super.update(container, game, delta);
         runAi(GameBaseState.player.x, GameBaseState.player.y, delta);
     }
 
     public void runAi(float px, float py, int delta) {
         if (py > y) {
             y += scale * delta;
+            if (downAnimation != null) currentSprite = downAnimation.getCurrentFrame();
         }
-        
         if (px > x) {
             x += scale * delta;
+            if (rightAnimation != null) currentSprite = rightAnimation.getCurrentFrame();
         }
-        
         if (py < y) {
             y -= scale * delta;
+            if (upAnimation != null) currentSprite = upAnimation.getCurrentFrame();
         }
-        
         if (px < x) {
             x -= scale * delta;
-        }        
+            if (leftAnimation != null) currentSprite = leftAnimation.getCurrentFrame();
+        }
     }
 
-    public void render() {
-        sprite = anim.getCurrentFrame();
-        sprite.draw(x - GameBaseState.mapXPosition - 32, y - GameBaseState.mapYPosition - 64);
-    }
-
-    @Override
-    public String toString() {
-        return "PaussiEnemy{" +
-                "x=" + x +
-                ", y=" + y +
-                '}';
-    }
 }
