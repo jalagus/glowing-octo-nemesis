@@ -112,6 +112,7 @@ public class GameBaseState extends BasicGameState {
         mapYPosition = (int) player.y - 426;
 
         if (container.getInput().isKeyPressed(Input.KEY_ESCAPE)) {
+            gameMusic.stop();
             game.enterState(Main.MAINMENUSTATE);
         }
     }
