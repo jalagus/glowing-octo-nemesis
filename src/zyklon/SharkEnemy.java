@@ -5,7 +5,7 @@ import org.newdawn.slick.Animation;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
-public class SharkEnemy {
+public class SharkEnemy extends Enemy {
 
     float x;
     float y;
