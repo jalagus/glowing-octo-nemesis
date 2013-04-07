@@ -44,7 +44,7 @@ public class Player extends GraphicEntity {
         setAnimations(left, right, up, down);
         currentSprite = down.getCurrentFrame();
 
-        fuck = new Sound("assets/fuck.ogg");
+        fuck = new Sound("assets/nom.ogg");
     }
 
     int prevTileID = -1;

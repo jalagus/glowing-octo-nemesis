@@ -93,7 +93,7 @@ public class GameBaseState extends BasicGameState {
     public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
         elapsedTime += delta;
         insaneAnimation.update(delta);
-        insane -= delta * 0.00003f;
+        insane -= delta * 0.0001f;
         if (insane < 0) insane = 0;
 
         if (!gameMusic.playing()) {
