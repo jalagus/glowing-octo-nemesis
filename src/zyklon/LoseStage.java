@@ -46,7 +46,7 @@ int stateId = -1;
     public void render(GameContainer gc, StateBasedGame sbg, Graphics grphcs) throws SlickException {
         background.draw(0, 0);
         
-        scoreFont.drawString(200, 270, "You got " + Main.points + " points!");
+        //scoreFont.drawString(200, 270, "You got " + Main.points + " points!");
     }
 
     @Override
