@@ -130,8 +130,15 @@ public class MainMenuState extends BasicGameState {
             switch (activeOption) {
                 case 0:
                     menuMusic.stop();
-                    sbg.enterState(Main.GAMESTATE);
+                    
+                    if (!gameRunning) {
+                        sbg.enterState(Main.INTROSTATE);
+                    }
+                    else {
+                        sbg.enterState(Main.GAMESTATE);
+                    }
                     gameRunning = true;
+                    
                     break;
                 case 1:
                     sbg.enterState(Main.HIGHSCORESTATE);

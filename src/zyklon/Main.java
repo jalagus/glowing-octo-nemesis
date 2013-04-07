@@ -13,6 +13,7 @@ public class Main extends StateBasedGame {
     public static final int FIGHTSTATE = 3;
     public static final int WINSTAGE = 4;
     public static final int LOSESTAGE = 5;
+    public static final int INTROSTATE = 6;
     
     public static int points;
 
@@ -25,6 +26,7 @@ public class Main extends StateBasedGame {
         this.addState(new PokemonFightState(FIGHTSTATE));
         this.addState(new WinStage(WINSTAGE));
         this.addState(new LoseStage(LOSESTAGE));
+        this.addState(new IntroState(INTROSTATE));
 
         this.enterState(MAINMENUSTATE);
     }
