@@ -3,6 +3,7 @@ package zyklon;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
+import org.newdawn.slick.state.transition.*;
 import org.newdawn.slick.tiled.TiledMap;
 
 import java.util.ArrayList;
@@ -21,12 +22,12 @@ public class GameBaseState extends BasicGameState {
     Inventory inventory = new Inventory();
 
     int stateId = -1;
-    
+
     Image shadowMask;
 
     private int elapsedTime = 0;
-    private float fading = 0;    
-    
+    private float fading = 0;
+
     public GameBaseState(int stateId) {
         this.stateId = stateId;
         entities = new ArrayList<GraphicEntity>();
@@ -52,30 +53,29 @@ public class GameBaseState extends BasicGameState {
         }
         inventory.init();
         MoveTile.move();
-        
-        shadowMask = new Image("assets/graphics/lightMask5.png");
 
+        shadowMask = new Image("assets/graphics/lightMask5.png");
     }
 
     @Override
     public void render(GameContainer container, StateBasedGame game, Graphics graphics) throws SlickException {
         map.render(-mapXPosition, -mapYPosition);
         for (GraphicEntity ge : entities) {
-            if (ge.active) {    
+            if (ge.active) {
                 ge.render(container, game, graphics);
             }
         }
-        
+
         Color fade = new Color(0, 0, 0, fading);
-        shadowMask.draw(0, 0, fade);        
-        
+        shadowMask.draw(0, 0, fade);
+
         inventory.render();
     }
 
     @Override
     public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
         elapsedTime += delta;
-        
+
         if (!gameMusic.playing()) {
             gameMusic.loop(1.0f, 0.2f);
         }
@@ -85,8 +85,8 @@ public class GameBaseState extends BasicGameState {
                 fading += 0.02f;
             }
             elapsedTime = 0;
-        }        
-        
+        }
+
         for (GraphicEntity ge : entities) {
             if (ge instanceof Player) {
                 ge.update(container, game, delta);
@@ -98,10 +98,14 @@ public class GameBaseState extends BasicGameState {
                 if (checkCollision(ge, player)) {
                     gameMusic.stop();
                     PokemonFightState pks = (PokemonFightState) game.getState(Main.FIGHTSTATE);
-
                     pks.setEnemyAndPlayer(player, ge);
-
-                    game.enterState(Main.FIGHTSTATE);
+                    int rand = (int) (Math.random() * 4);
+                    Transition t;
+                    if (rand == 0) t = new VerticalSplitTransition();
+                    else if (rand == 1) t = new HorizontalSplitTransition();
+                    else if (rand == 2) t = new RotateTransition();
+                    else t = new BlobbyTransition();
+                    game.enterState(Main.FIGHTSTATE, new EmptyTransition(), t);
 
                     ge.active = false;
                 }
@@ -116,12 +120,12 @@ public class GameBaseState extends BasicGameState {
             game.enterState(Main.MAINMENUSTATE);
         }
     }
-    
+
     private boolean checkCollision(GraphicEntity enemy, Player player) {
         int colpoint_x = (int) (player.x - enemy.x);
         int colpoint_y = (int) (player.y - enemy.y);
-        
-        
+
+
         if (colpoint_x > -10 && colpoint_x < 10 && colpoint_y > -10 && colpoint_y < 10) {
             return true;
         }

@@ -22,7 +22,6 @@ public class Main extends StateBasedGame {
         this.addState(new PokemonFightState(FIGHTSTATE));
         this.addState(new WinStage(WINSTAGE));
 
-
         this.enterState(MAINMENUSTATE);
     }
 

@@ -9,6 +9,8 @@ import org.newdawn.slick.*;
 import org.newdawn.slick.font.effects.ColorEffect;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
+import org.newdawn.slick.state.transition.EmptyTransition;
+import org.newdawn.slick.state.transition.FadeInTransition;
 
 
 public class PokemonFightState extends BasicGameState {
@@ -141,13 +143,13 @@ public class PokemonFightState extends BasicGameState {
                 if (enemy.hp < 1) {
                     enemy.hp = 0;
                     fightMusic.stop();
-                    sbg.enterState(Main.GAMESTATE);
+                    sbg.enterState(Main.GAMESTATE, new EmptyTransition(), new FadeInTransition());
                 }
 
                 if (player.hp < 1) {
                     player.hp = 0;
                     fightMusic.stop();
-                    sbg.enterState(Main.GAMESTATE);
+                    sbg.enterState(Main.GAMESTATE, new EmptyTransition(), new FadeInTransition());
                 }
             }
 
