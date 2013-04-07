@@ -22,6 +22,7 @@ public class GameBaseState extends BasicGameState {
     public static int mapYPosition = 0;
     Inventory inventory = new Inventory();
     Animation insaneAnimation;
+    Sound gachunk;
 
     int stateId = -1;
 
@@ -62,6 +63,7 @@ public class GameBaseState extends BasicGameState {
                 new Image("assets/insanity2.png")
         }, 200);
         shadowMask = new Image("assets/graphics/lightMask5.png");
+        gachunk = new Sound("assets/gachunk.ogg");
     }
 
     @Override
@@ -117,6 +119,9 @@ public class GameBaseState extends BasicGameState {
                     gameMusic.stop();
                     PokemonFightState pks = (PokemonFightState) game.getState(Main.FIGHTSTATE);
                     pks.setEnemyAndPlayer(player, ge);
+                    if (ge instanceof SharkEnemy) {
+                        gachunk.play(1, 2);
+                    }
                     int rand = (int) (Math.random() * 4);
                     Transition t;
                     if (rand == 0) t = new VerticalSplitTransition();
