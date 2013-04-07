@@ -89,7 +89,7 @@ public class GameBaseState extends BasicGameState {
             elapsedTime = 0;
             
             if (Main.points > 0) {
-                Main.points--;
+                Main.points -= 10;
             }
         }
 
