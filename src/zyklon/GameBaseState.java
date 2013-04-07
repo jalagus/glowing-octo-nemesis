@@ -10,16 +10,18 @@ import java.util.ArrayList;
 
 public class GameBaseState extends BasicGameState {
 
+    public static float insane = 0;
     Sound gameMusic;
 
     public static TiledMap map;
     public static Player player = new Player(2590, 2590);
-    public ArrayList<GraphicEntity> entities;
+    public static ArrayList<GraphicEntity> entities;
     public static int mapWidth;
     public static int mapHeight;
     public static int mapXPosition = 0;
     public static int mapYPosition = 0;
     Inventory inventory = new Inventory();
+    Animation insaneAnimation;
 
     int stateId = -1;
 
@@ -55,12 +57,16 @@ public class GameBaseState extends BasicGameState {
         }
         inventory.init();
         MoveTile.move();
-
+        insaneAnimation = new Animation(new Image[] {
+                new Image("assets/insanity.png"),
+                new Image("assets/insanity2.png")
+        }, 200);
         shadowMask = new Image("assets/graphics/lightMask5.png");
     }
 
     @Override
     public void render(GameContainer container, StateBasedGame game, Graphics graphics) throws SlickException {
+
         map.render(-mapXPosition, -mapYPosition);
         for (GraphicEntity ge : entities) {
             if (ge.active) {
@@ -72,11 +78,17 @@ public class GameBaseState extends BasicGameState {
         shadowMask.draw(0, 0, fade);
 
         inventory.render();
+        if (insane != 0) {
+            insaneAnimation.draw(0, 0, new Color(0, 0, 0, insane * 0.004f));
+        }
     }
 
     @Override
     public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
         elapsedTime += delta;
+        insaneAnimation.update(delta);
+        insane -= delta * 0.01f;
+        if (insane < 0) insane = 0;
 
         if (!gameMusic.playing()) {
             gameMusic.loop(1.0f, 0.2f);
@@ -113,7 +125,8 @@ public class GameBaseState extends BasicGameState {
                     else t = new BlobbyTransition();
                     game.enterState(Main.FIGHTSTATE, new EmptyTransition(), t);
 
-                    ge.active = false;
+                    ge.x = (float) Math.random() * 4000;
+                    ge.y = (float) Math.random() * 4000;
                 }
             }
         }

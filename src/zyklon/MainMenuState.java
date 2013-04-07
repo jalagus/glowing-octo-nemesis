@@ -100,7 +100,7 @@ public class MainMenuState extends BasicGameState {
 
     public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
         if (!menuMusic.playing()) {
-            menuMusic.loop(1.0f, 0.2f);
+            menuMusic.loop(1.0f, 0.1f);
         }
 
         menuFont.loadGlyphs();
