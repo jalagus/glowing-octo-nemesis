@@ -5,6 +5,8 @@
 
 package zyklon;
 
+import maingame.Player;
+import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
@@ -12,7 +14,6 @@ import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.UnicodeFont;
 import org.newdawn.slick.font.effects.ColorEffect;
-import org.newdawn.slick.imageout.ImageOut;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
@@ -25,12 +26,25 @@ public class PokemonFightState extends BasicGameState {
     UnicodeFont menuFont;
     UnicodeFont statsFont;
     
+    Player player;
+    Enemy enemy;
+    
     int stateId = -1;
     
     private int menuOption = 0;
     
     public PokemonFightState(int stateId) {
         this.stateId = stateId;
+        
+        this.enemy = new Enemy();
+        this.enemy.hp = 100;
+        this.enemy.maxHp = 100;
+        this.enemy.name = "Karhu";
+    }
+    
+    public void setEnemyAndPlayer(Player player, Enemy enemy) {
+        this.player = player;
+        this.enemy = enemy;
     }
     
     @Override
@@ -57,9 +71,22 @@ public class PokemonFightState extends BasicGameState {
         statsFont.drawString(700, 490, "HP");
         statsFont.drawString(700, 520, "100 / 100");
         
-        statsFont.drawString(50, 50, "Haikala");
+        statsFont.drawString(50, 50, enemy.name);
         statsFont.drawString(50, 80, "HP");
-        statsFont.drawString(50, 110, "50 / 50");
+        statsFont.drawString(50, 110, enemy.hp + " / " + enemy.maxHp);
+        
+        // Enemy
+        grphcs.setColor(Color.yellow);
+        grphcs.fillRect(100, 85, 200, 20);
+        
+        // Mummo
+        grphcs.setColor(Color.yellow);
+        grphcs.fillRect(750, 495, 200, 20);
+        
+        
+        grphcs.setColor(Color.black);
+        grphcs.drawRect(100, 85, 200, 20);
+        grphcs.drawRect(750, 495, 200, 20);
         
         switch (menuOption) {
             case 0:
@@ -103,14 +130,7 @@ public class PokemonFightState extends BasicGameState {
             if(menuOption > 3) {
                 menuOption = 0;
             }
-        }
-        
-        if (gc.getInput().isKeyPressed(Input.KEY_S)) {
-            Image target = new Image(gc.getWidth(), gc.getHeight());
-            gc.getGraphics().copyArea(target, 0, 0);
-            ImageOut.write(target.getFlippedCopy(false, true), "screenshot.png", false);
-            target.destroy();
-        }        
+        }      
 
         
     }
