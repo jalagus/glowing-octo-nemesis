@@ -11,6 +11,7 @@ public class Main extends StateBasedGame {
     public static final int HIGHSCORESTATE = 1;
     public static final int GAMESTATE = 2;
     public static final int FIGHTSTATE = 3;
+    public static final int WINSTAGE = 4;
 
     public Main() {
         super("Zyklon π");
@@ -19,6 +20,7 @@ public class Main extends StateBasedGame {
         this.addState(new HighScoreState(HIGHSCORESTATE));
         this.addState(new GameBaseState(GAMESTATE));
         this.addState(new PokemonFightState(FIGHTSTATE));
+        this.addState(new WinStage(WINSTAGE));
 
 
         this.enterState(MAINMENUSTATE);
