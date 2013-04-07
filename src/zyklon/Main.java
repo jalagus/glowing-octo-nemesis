@@ -12,6 +12,7 @@ public class Main extends StateBasedGame {
     public static final int GAMESTATE = 2;
     public static final int FIGHTSTATE = 3;
     public static final int WINSTAGE = 4;
+    public static final int LOSESTAGE = 5;
 
     public Main() {
         super("Zyklon π");
@@ -21,6 +22,7 @@ public class Main extends StateBasedGame {
         this.addState(new GameBaseState(GAMESTATE));
         this.addState(new PokemonFightState(FIGHTSTATE));
         this.addState(new WinStage(WINSTAGE));
+        this.addState(new LoseStage(LOSESTAGE));
 
         this.enterState(MAINMENUSTATE);
     }
@@ -28,7 +30,7 @@ public class Main extends StateBasedGame {
     public static void main(String[] args) throws SlickException {
         AppGameContainer app = new AppGameContainer(new Main());
 
-        app.setDisplayMode(1024, 768, true);
+        app.setDisplayMode(1024, 768, false);
         app.start();
     }
 
