@@ -13,6 +13,7 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.Sound;
 import org.newdawn.slick.UnicodeFont;
 import org.newdawn.slick.font.effects.ColorEffect;
 import org.newdawn.slick.state.BasicGameState;
@@ -31,6 +32,8 @@ public class PokemonFightState extends BasicGameState {
     
     Player player;
     Enemy enemy;
+    
+    Sound fightMusic;
     
     int stateId = -1;
     
@@ -62,7 +65,9 @@ public class PokemonFightState extends BasicGameState {
         statsFont = new UnicodeFont("assets/menu.ttf", 30, false, false);  
         
         menuFont.getEffects().add(new ColorEffect(java.awt.Color.white));         
-        statsFont.getEffects().add(new ColorEffect(java.awt.Color.white));        
+        statsFont.getEffects().add(new ColorEffect(java.awt.Color.white));  
+        
+        fightMusic = new Sound("assets/audio/fightMusic.ogg");
     }
 
     @Override
@@ -116,6 +121,10 @@ public class PokemonFightState extends BasicGameState {
 
     @Override
     public void update(GameContainer gc, StateBasedGame sbg, int i) throws SlickException {
+        if (!fightMusic.playing()) {
+            fightMusic.loop(1.0f, 0.2f);
+        }
+        
         menuFont.loadGlyphs();
         statsFont.loadGlyphs();
         
@@ -140,10 +149,12 @@ public class PokemonFightState extends BasicGameState {
             player.hp = player.hp - 10;
             
             if (enemy.hp < 1) {
+                fightMusic.stop();
                 sbg.enterState(Main.GAMESTATE);
             }
             
             if (player.hp < 1) {
+                fightMusic.stop();
                 sbg.enterState(Main.GAMESTATE);
             }
             
