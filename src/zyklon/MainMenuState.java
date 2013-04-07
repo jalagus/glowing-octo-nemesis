@@ -21,6 +21,8 @@ public class MainMenuState extends BasicGameState {
     int activeOption = 0;
 
     int stateID = -1;
+    
+    public boolean gameRunning = false;
 
     int menuPositionX = 150;
     int menuPositionY = 220;
@@ -57,7 +59,13 @@ public class MainMenuState extends BasicGameState {
 
         String credits = "Glowing Octo Nemesis";
 
-        String newGameText = "New Game";
+        String newGameText;
+        if (!gameRunning) {
+            newGameText = "New Game";
+        }
+        else {
+            newGameText = "Continue Game";            
+        }
         String highScoreText = "High Scores";
         String exitGameText = "Exit Game";
 
@@ -123,6 +131,7 @@ public class MainMenuState extends BasicGameState {
                 case 0:
                     menuMusic.stop();
                     sbg.enterState(Main.GAMESTATE);
+                    gameRunning = true;
                     break;
                 case 1:
                     sbg.enterState(Main.HIGHSCORESTATE);
