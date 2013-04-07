@@ -48,8 +48,8 @@ public class HighScoreState extends BasicGameState {
 
         for (int i = 0; i < scores.length; i++) {
             scoreFont.drawString(80, 140 + i * 45, "#" + (i + 1));
-            scoreFont.drawString(150, 140 + i * 45, scores[i].name);
-            scoreFont.drawString(320, 140 + i * 45, scores[i].score + " pts");
+            scoreFont.drawString(150, 140 + i * 45, scores[i].score + " pts");
+            //scoreFont.drawString(320, 140 + i * 45, scores[i].score + " pts");
         }
     }
 
