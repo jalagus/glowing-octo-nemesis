@@ -45,7 +45,6 @@ public class GameBaseState extends BasicGameState {
 
     @Override
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-        player = new Player();
         player.init();
         inventory.init();
         map = new TiledMap("assets/tilemap.tmx");
