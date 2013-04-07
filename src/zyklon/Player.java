@@ -9,7 +9,7 @@ public class Player extends GraphicEntity {
     private static final int ANIMATION_SPEED = 150;
     
     public int stamina;
-    public int maxStamina;
+    public int maxStamina = 200;
     
 
     Sound fuck;
