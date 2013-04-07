@@ -21,9 +21,12 @@ public class GameBaseState extends BasicGameState {
     Inventory inventory = new Inventory();
 
     int stateId = -1;
+    
+    Image shadowMask;
 
-    Animation lightMask;
-
+    private int elapsedTime = 0;
+    private float fading = 0;    
+    
     public GameBaseState(int stateId) {
         this.stateId = stateId;
         entities = new ArrayList<GraphicEntity>();
@@ -49,17 +52,9 @@ public class GameBaseState extends BasicGameState {
         }
         inventory.init();
         MoveTile.move();
+        
+        shadowMask = new Image("assets/graphics/lightMask5.png");
 
-        lightMask = new Animation(new Image[]{
-                new Image("assets/graphics/lightMask1.png"),
-                new Image("assets/graphics/lightMask2.png"),
-                new Image("assets/graphics/lightMask3.png"),
-                new Image("assets/graphics/lightMask4.png"),
-                new Image("assets/graphics/lightMask5.png")
-        }, 2000);
-
-        lightMask.start();
-        lightMask.stopAt(4);
     }
 
     @Override
@@ -68,19 +63,28 @@ public class GameBaseState extends BasicGameState {
         for (GraphicEntity ge : entities) {
             ge.render(container, game, graphics);
         }
-
-        lightMask.getCurrentFrame().draw(0, 0);
+        
+        Color fade = new Color(0, 0, 0, fading);
+        shadowMask.draw(0, 0, fade);        
+        
         inventory.render();
     }
 
     @Override
     public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
+        elapsedTime += delta;
+        
         if (!gameMusic.playing()) {
             gameMusic.loop(1.0f, 0.2f);
         }
 
-        lightMask.update(delta);
-
+        if (elapsedTime > 500) {
+            if (fading < 1) {
+                fading += 0.02f;
+            }
+            elapsedTime = 0;
+        }        
+        
         for (GraphicEntity ge : entities) {
             ge.update(container, game, delta);
         }
@@ -89,7 +93,7 @@ public class GameBaseState extends BasicGameState {
         mapYPosition = (int) player.y - 426;
 
         if (container.getInput().isKeyPressed(Input.KEY_ESCAPE)) {
-            container.exit();
+            game.enterState(Main.MAINMENUSTATE);
         }
     }
 

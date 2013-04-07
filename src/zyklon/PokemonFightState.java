@@ -137,11 +137,13 @@ public class PokemonFightState extends BasicGameState {
             player.hp = player.hp - 10;
 
             if (enemy.hp < 1) {
+                enemy.hp = 0;
                 fightMusic.stop();
                 sbg.enterState(Main.GAMESTATE);
             }
 
             if (player.hp < 1) {
+                player.hp = 0;
                 fightMusic.stop();
                 sbg.enterState(Main.GAMESTATE);
             }
