@@ -22,15 +22,6 @@ public class Main extends StateBasedGame {
 
 
         this.enterState(GAMESTATE);
-
-        PokemonFightState temp = (PokemonFightState) this.getState(FIGHTSTATE);
-
-        GraphicEntity en = new BearEnemy(0, 0);
-
-        temp.setEnemyAndPlayer(new Player(0, 0), en);
-
-        this.enterState(FIGHTSTATE);
-
     }
 
     public static void main(String[] args) throws SlickException {

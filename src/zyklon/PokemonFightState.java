@@ -48,8 +48,6 @@ public class PokemonFightState extends BasicGameState {
         hud = new Image("assets/graphics/taistelureunat.png");
 
         fightMusic = new Sound("assets/audio/fightMusic.ogg");
-        enemy.init();
-        enemyFight = enemy.fightSprite;
 
         menuFont = new UnicodeFont("assets/menu.ttf", 30, false, false);
         statsFont = new UnicodeFont("assets/menu.ttf", 30, false, false);
@@ -62,7 +60,7 @@ public class PokemonFightState extends BasicGameState {
     public void render(GameContainer gc, StateBasedGame sbg, Graphics grphcs) throws SlickException {
         background.draw(0, 0);
         hud.draw(0, 0);
-        enemyFight.draw(0, 0);
+        enemy.fightSprite.draw(0, 0);
 
         statsFont.drawString(700, 460, player.name);
         statsFont.drawString(700, 490, "HP");
